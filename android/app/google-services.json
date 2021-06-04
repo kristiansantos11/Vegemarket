@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634268377500",
+    "project_id": "vegemarket-84fa5",
+    "storage_bucket": "vegemarket-84fa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634268377500:android:5badc031643f29bc976859",
+        "android_client_info": {
+          "package_name": "com.jomahek.vegemarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634268377500-hihlf71k4jgt4er5lrl5s4v0uct55vsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrPH3ABaFXCuh0R5EvEHsmMXKdcmZJyBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634268377500-hihlf71k4jgt4er5lrl5s4v0uct55vsj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
