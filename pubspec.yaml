@@ -61,6 +61,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -169,3 +171,13 @@ flutter:
         - asset: assets/font/proxima_nova/Proxima Nova Black.otf
           weight: 900
           style: normal
+    - family: Gilbert
+      fonts:
+        - asset: assets/font/gilbert/gilbert-bold.otf
+          style: normal
+          weight: 700
+    - family: Gilbert Color
+      fonts:
+        - asset: assets/font/gilbert/gilbert-color-bold.otf
+          style: normal
+          weight: 700
