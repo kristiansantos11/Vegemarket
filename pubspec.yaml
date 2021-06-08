@@ -28,15 +28,28 @@ dependencies:
   firebase_core: ^1.2.1
   firebase_auth: ^1.3.0
   cloud_firestore: ^2.2.1
+  firebase_storage: ^8.1.1
 
   # Provider
   provider: ^5.0.0
+
+  # Path Provider to easily access and store temporary files
+  path_provider: ^2.0.2
 
   # Phoenix, for easy app refresh
   flutter_phoenix: ^1.0.0
 
   # For responsive UI
   responsive_framework: ^0.1.0
+
+  # For birthday picker
+  datetime_picker_formfield: ^2.0.0
+
+  # Image picker
+  image_picker: ^0.8.0+1
+
+  # Image cropper
+  image_cropper: ^1.4.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

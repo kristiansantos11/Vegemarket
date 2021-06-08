@@ -35,7 +35,7 @@ class _StartScreenState extends State<StartScreen> {
                       style: TextStyle(
                         fontFamily: "Gilbert Color",
                         color: Colors.black,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                         fontSize: 75,
                         height: 0.7,
                       ),
@@ -45,6 +45,7 @@ class _StartScreenState extends State<StartScreen> {
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "Proxima Nova",
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ],

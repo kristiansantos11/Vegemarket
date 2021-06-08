@@ -12,6 +12,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case InitialScreen.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: InitialScreen.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -22,6 +23,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case Login.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: Login.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -32,6 +34,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case Register.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: Register.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -42,6 +45,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case MainMenu.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: MainMenu.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
