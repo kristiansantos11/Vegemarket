@@ -263,89 +263,89 @@ class _MainMenuStartState extends State<MainMenuStart> {
   }
 }
 
-class PageViewMainMenu extends StatefulWidget {
-  const PageViewMainMenu({ Key? key }) : super(key: key);
+// class PageViewMainMenu extends StatefulWidget {
+//   const PageViewMainMenu({ Key? key }) : super(key: key);
 
-  @override
-  _PageViewMainMenuState createState() => _PageViewMainMenuState();
-}
+//   @override
+//   _PageViewMainMenuState createState() => _PageViewMainMenuState();
+// }
 
-class _PageViewMainMenuState extends State<PageViewMainMenu> {
-  PageController? pageController;
-  int? currentPage;
+// class _PageViewMainMenuState extends State<PageViewMainMenu> {
+//   PageController? pageController;
+//   int? currentPage;
 
-  @override
-  Widget build(BuildContext context) {
-    return PageView(
-          onPageChanged: (page) {
-            setState(() {
-              currentPage = page;
-            });
-          },
-          controller: pageController,
-          physics: NeverScrollableScrollPhysics(),
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Stack(
-                    children: <Widget>[
+//   @override
+//   Widget build(BuildContext context) {
+//     return PageView(
+//           onPageChanged: (page) {
+//             setState(() {
+//               currentPage = page;
+//             });
+//           },
+//           controller: pageController,
+//           physics: NeverScrollableScrollPhysics(),
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(12.0),
+//               child: ClipRRect(
+//                 borderRadius: BorderRadius.circular(12.0),
+//                 child: Container(
+//                   decoration: BoxDecoration(color: Colors.white),
+//                   child: Stack(
+//                     children: <Widget>[
 
-                      // TODO: # Lagay nalang yung path sa loob ng AssetImage widget.
-                      // Container(
-                      //   decoration: BoxDecoration(image: DecorationImage(
-                      //     image: AssetImage('')
-                      //   )),
-                      // )
+//                       // TODO: # Lagay nalang yung path sa loob ng AssetImage widget.
+//                       // Container(
+//                       //   decoration: BoxDecoration(image: DecorationImage(
+//                       //     image: AssetImage('')
+//                       //   )),
+//                       // )
 
-                      OverflowBox(
-                        minWidth: 0.0,
-                        minHeight: 0.0,
-                        maxWidth: double.infinity,
-                        maxHeight: double.infinity,
-                        child: CircularText(
-                          children: [
-                            TextItem(
-                              text: Text(
-                                "How about ordering some veggies today?".toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  fontFamily: "Creamy Coconut",
-                                  color: Colors.blue[300],
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              space: 2.15,
-                              startAngle: -90,
-                              startAngleAlignment: StartAngleAlignment.center,
-                              direction: CircularTextDirection.clockwise,
-                            ),
-                          ],
-                          radius: 300,
-                          position: CircularTextPosition.outside,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+//                       OverflowBox(
+//                         minWidth: 0.0,
+//                         minHeight: 0.0,
+//                         maxWidth: double.infinity,
+//                         maxHeight: double.infinity,
+//                         child: CircularText(
+//                           children: [
+//                             TextItem(
+//                               text: Text(
+//                                 "How about ordering some veggies today?".toUpperCase(),
+//                                 style: TextStyle(
+//                                   fontSize: 40,
+//                                   fontFamily: "Creamy Coconut",
+//                                   color: Colors.blue[300],
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               ),
+//                               space: 2.15,
+//                               startAngle: -90,
+//                               startAngleAlignment: StartAngleAlignment.center,
+//                               direction: CircularTextDirection.clockwise,
+//                             ),
+//                           ],
+//                           radius: 300,
+//                           position: CircularTextPosition.outside,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//             ),
 
-            // Shops Page
-            ShopsPage(),
+//             // Shops Page
+//             ShopsPage(),
 
-            // Messaging
-            Messaging(),
+//             // Messaging
+//             Messaging(),
 
-            // Profile
-            Profile(),
+//             // Profile
+//             Profile(),
 
-            // Settings
-            Settings(),
-          ],
-        );
-  }
-}
+//             // Settings
+//             Settings(),
+//           ],
+//         );
+//   }
+// }
