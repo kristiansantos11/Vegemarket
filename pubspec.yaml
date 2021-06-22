@@ -51,6 +51,9 @@ dependencies:
   # Image cropper
   image_cropper: ^1.4.0
 
+  # Curved text for main menu
+  flutter_circular_text: ^0.3.1
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -194,3 +197,7 @@ flutter:
         - asset: assets/font/gilbert/gilbert-color-bold.otf
           style: normal
           weight: 700
+    - family: Creamy Coconut
+      fonts:
+        - asset: assets/font/creamy_coconut/CreamyCoconut.ttf
+          style: normal

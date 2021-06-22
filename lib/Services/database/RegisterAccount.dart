@@ -10,7 +10,6 @@ class Database
 {
   Map<String, dynamic>? userInfo;
   UploadTask? result;
-  User? firebaseUser = FirebaseAuth.instance.currentUser;
   final FirebaseAuth auth = FirebaseAuth.instance;
   final CollectionReference basicInfo = FirebaseFirestore.instance.collection('Basic Info');
 
@@ -19,6 +18,7 @@ class Database
     try
     {
       await auth.createUserWithEmailAndPassword(email: user.email!, password: user.password!);
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
       user.uid = firebaseUser?.uid.toString();
       await CloudStorage().uploadProfilePicture(
         file: user.profilePicture,

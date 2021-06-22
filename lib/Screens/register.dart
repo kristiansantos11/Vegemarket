@@ -421,22 +421,20 @@ class _RegisterState extends State<Register> {
                                     ),
                             ),
                           ),
-                          // SizedBox(height: 20),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(8.0),
-                          //   child: Text("Birthday",
-                          //   style: TextStyle(
-                          //       fontFamily: 'Proxima Nova',
-                          //       fontStyle: FontStyle.normal,
-                          //       fontWeight: FontWeight.bold,
-                          //       fontSize:
-                          //           ResponsiveFlutter.of(
-                          //                   context)
-                          //               .scale(18),
-                          //       height: 0.5,
-                          //       color: Colors.black
-                          //   ),),
-                          // ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Birthday",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
 
                           Padding(
                             padding: const EdgeInsets.all(8.0),
