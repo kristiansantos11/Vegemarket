@@ -27,7 +27,7 @@ import 'package:provider/provider.dart';
 class Register extends StatefulWidget {
   static const routeName = '/signup';
 
-  const Register({Key? key}) : super(key: key);
+  const Register({Key key}) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
@@ -39,14 +39,14 @@ class _RegisterState extends State<Register> {
   
   bool toggle1 = true;
   bool toggle2 = true;
-  String? email;
-  String? password;
-  String? username;
-  String? name;
-  DateTime? birthday;
-  String? contactnum;
-  String? gender;
-  String? uid;
+  String email;
+  String password;
+  String username;
+  String name;
+  DateTime birthday;
+  String contactnum;
+  String gender;
+  String uid;
   dynamic response;
   String error = "";
 
@@ -54,9 +54,9 @@ class _RegisterState extends State<Register> {
     Navigator.of(ctx).popUntil(ModalRoute.withName(InitialScreen.routeName));
   }
 
-  Future register({required BuildContext context}) async
+  Future register({@required BuildContext context}) async
   {
-    if(formKey.currentState!.validate() && birthday != null)
+    if(formKey.currentState.validate() && birthday != null)
     {
       print("Validated successfully."); //debug
       print("Current Data: $email,$password,$username,$name,$birthday,$contactnum,$gender"); //debug
@@ -70,6 +70,7 @@ class _RegisterState extends State<Register> {
         birthdate: birthday,
         contactNumber: contactnum,
         profilePicture: File('assets/img/default_profile_picture.jpg'),
+        isSeller: 0,
       );
 
       response = await Database().register(_user);
@@ -448,7 +449,7 @@ class _RegisterState extends State<Register> {
                                   lastDate: DateTime(2100)
                                 );
                               },
-                              onChanged: (DateTime? value){
+                              onChanged: (DateTime value){
                                 setState(() => {birthday = value});
                               },
                               decoration: InputDecoration(
@@ -483,7 +484,7 @@ class _RegisterState extends State<Register> {
                                 {
                                   return "Empty number!";
                                 }
-                                if(RegExp(r'^[0-9]*$').hasMatch(val!)&&RegExp(r'$[0-9]\d{10}$|^[0-9]\d{10}$').hasMatch(val))
+                                if(RegExp(r'^[0-9]*$').hasMatch(val)&&RegExp(r'$[0-9]\d{10}$|^[0-9]\d{10}$').hasMatch(val))
                                 {
                                   contactnum = val;
                                   return null;

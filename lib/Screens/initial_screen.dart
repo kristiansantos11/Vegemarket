@@ -5,7 +5,7 @@ import 'package:vegemarket/Screens/main_menu.dart';
 import 'package:vegemarket/Screens/start_screen.dart';
 
 class InitialScreen extends StatefulWidget {
-  const InitialScreen({ Key? key }) : super(key: key);
+  const InitialScreen({ Key key }) : super(key: key);
 
   static const routeName = '/main';
 
@@ -14,10 +14,10 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  User? firebaseUser;
+  User firebaseUser;
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
+    final firebaseUser = context.watch<User>();
     if(firebaseUser != null){
       return MainMenu();
     } else {

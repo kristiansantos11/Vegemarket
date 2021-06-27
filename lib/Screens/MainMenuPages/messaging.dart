@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Messaging extends StatefulWidget {
-  const Messaging({ Key? key }) : super(key: key);
+  const Messaging({ Key key }) : super(key: key);
 
   @override
   _MessagingState createState() => _MessagingState();

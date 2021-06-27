@@ -41,7 +41,7 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
                           fontFamily: 'Proxima Nova',
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w700,
-                          fontSize: 12,
+                          fontSize: 45,
                         ),
                       ),
 
@@ -55,7 +55,7 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
                         style: TextStyle(
                           fontFamily: 'Proxima Nova',
                           fontStyle: FontStyle.normal,
-                          fontSize: 12,
+                          fontSize: 24,
                         ),
                       ),
                     ],
@@ -63,14 +63,14 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
 
                   GestureDetector(
                     child: Container(
-                      width: 60,
-                      height: 60,
+                      width: 120,
+                      height: 120,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         border: Border.all(color: Colors.black, width: 2.0),
                       ),
                       child: Center(
-                        child: Icon(Icons.add, size: 12)
+                        child: Icon(Icons.add, size: 48)
                       ),
                     ),
                     onTap: (){
@@ -80,8 +80,9 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
 
                   ElevatedButton(
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.all(10.0)),
+                      padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(20, 15, 20, 15)),
                       backgroundColor: MaterialStateProperty.all(Colors.green[600]),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)))
                     ),
                     child: Text(
                       "LATER",
@@ -89,7 +90,8 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
                         color: Colors.white,
                         fontFamily: 'Proxima Nova',
                         fontStyle: FontStyle.normal,
-                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 24,
                       ),
                     ),
                     onPressed: (){

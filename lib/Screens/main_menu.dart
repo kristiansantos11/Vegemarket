@@ -10,7 +10,7 @@ import 'package:flutter_circular_text/circular_text.dart';
 import 'package:vegemarket/Services/SizeGetter.dart';
 
 class MainMenu extends StatefulWidget {
-  const MainMenu({ Key? key }) : super(key: key);
+  const MainMenu({ Key key }) : super(key: key);
 
   static const routeName = '/main_menu';
 
@@ -19,12 +19,13 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
-  int? currentPage;
+  int currentPage;
 
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   List<Widget> pageWidget = [
     MainMenuStart(), 
+    
     // Shops Page
     ShopsPage(),
 
@@ -57,7 +58,7 @@ class _MainMenuState extends State<MainMenu> {
           shadowColor: Colors.white,
           backgroundColor: Colors.white,
           title: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height/15,
@@ -66,9 +67,16 @@ class _MainMenuState extends State<MainMenu> {
               child: Image.asset("assets/img/vegemarket-text.png",),
             ),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              color: Colors.green[600],
+              onPressed: (){},
+              iconSize: 30,
+            ),
+          ],
         ),
         bottomNavigationBar: BottomAppBar(
-          elevation: 16,
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 0),
@@ -116,7 +124,7 @@ class _MainMenuState extends State<MainMenu> {
                         ),
                         backgroundColor: MaterialStateProperty.all(
                             (currentPage == 1) ? Colors.amber[700] : Colors.grey)),
-                    child: Icon(Icons.shopping_cart, color: Colors.white)
+                    child: Icon(Icons.store, color: Colors.white, size: 27)
                 ),
                 // # Calendar button
                 ElevatedButton(
@@ -195,7 +203,7 @@ class _MainMenuState extends State<MainMenu> {
             position: offsetAnimation,
           );
         },
-        child: pageWidget[currentPage!],
+        child: pageWidget[currentPage],
       ),
       ),
     );
@@ -203,7 +211,7 @@ class _MainMenuState extends State<MainMenu> {
 }
 
 class MainMenuStart extends StatefulWidget {
-  const MainMenuStart({ Key? key }) : super(key: key);
+  const MainMenuStart({ Key key }) : super(key: key);
 
   @override
   _MainMenuStartState createState() => _MainMenuStartState();

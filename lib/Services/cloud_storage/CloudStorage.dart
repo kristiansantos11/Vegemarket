@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ImageUtils {
-  static Future<File> imageToFile({String? imageName, String? ext}) async {
+  static Future<File> imageToFile({String imageName, String ext}) async {
     var bytes = await rootBundle.load('assets/img/$imageName.$ext');
     String tempPath = (await getTemporaryDirectory()).path;
     File file = File('$tempPath/profile.png');
@@ -18,7 +18,7 @@ class ImageUtils {
 }
 
 class CloudStorage{
-  Future<void> uploadProfilePicture({File? file, required String uid, bool def = false}) async {
+  Future<void> uploadProfilePicture({File file, @required String uid, bool def = false}) async {
     if(def){
       file = await ImageUtils.imageToFile(imageName: 'default_profile_picture', ext: 'jpg');
     }
@@ -39,7 +39,7 @@ class CloudStorage{
 
     final metadata = SettableMetadata(
         contentType: 'image/jpeg',
-        customMetadata: {'picked-file-path': file!.path});
+        customMetadata: {'picked-file-path': file.path});
 
     if (kIsWeb) {
       await ref.putData(await file.readAsBytes(), metadata);
@@ -57,7 +57,7 @@ class CloudStorage{
     }
   }
 
-  Future<String> getProfilePictureLink({required String uid}) async {
+  Future<String> getProfilePictureLink({@required String uid}) async {
     Reference ref = FirebaseStorage.instance
         .ref()
         .child('profile')

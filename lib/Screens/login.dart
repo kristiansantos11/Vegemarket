@@ -115,8 +115,8 @@ class _LoginState extends State<Login> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(50, 20, 50, 0),
                         child: TextFormField(
-                          validator: (String? value) {
-                            if (value!.isEmpty) {
+                          validator: (String value) {
+                            if (value.isEmpty) {
                               return 'Please enter your e-mail';
                             }
                             return null;
@@ -155,8 +155,8 @@ class _LoginState extends State<Login> {
                         padding: EdgeInsets.fromLTRB(50, 10, 50, 0),
                         child: TextFormField(
                           cursorColor: Color(0xfff77272),
-                          validator: (String? value) {
-                            if (value!.isEmpty) {
+                          validator: (String value) {
+                            if (value.isEmpty) {
                               return 'Please enter your password';
                             }
                             return null;

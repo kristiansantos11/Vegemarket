@@ -4,7 +4,7 @@ import 'package:vegemarket/Services/AuthenticationService.dart';
 import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({ Key? key }) : super(key: key);
+  const Profile({ Key key }) : super(key: key);
 
   @override
   _ProfileState createState() => _ProfileState();

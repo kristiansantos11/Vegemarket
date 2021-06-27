@@ -4,7 +4,7 @@ import 'package:vegemarket/Services/AuthenticationService.dart';
 import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {
-  const Settings({ Key? key }) : super(key: key);
+  const Settings({ Key key }) : super(key: key);
 
   @override
   _SettingsState createState() => _SettingsState();

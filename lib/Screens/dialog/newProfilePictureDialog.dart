@@ -6,7 +6,7 @@ import 'package:vegemarket/Services/ProfilePictureUpload.dart';
 import 'package:vegemarket/Services/SizeGetter.dart';
 
 
-Future newProfilePictureDialog({required BuildContext context, required User user}){
+Future newProfilePictureDialog({@required BuildContext context, @required User user}){
   ImagePicker _imagePicker = ImagePicker();
   return showGeneralDialog(
     barrierLabel: "Profile Picture",
@@ -21,7 +21,7 @@ Future newProfilePictureDialog({required BuildContext context, required User use
           child: Align(
             alignment: Alignment.center,
             child: Container(
-              height: 140,
+              height: 220,
               margin: EdgeInsets.only(bottom: 50, left: 25, right: 25),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -41,11 +41,11 @@ Future newProfilePictureDialog({required BuildContext context, required User use
                           color: Colors.grey[700],
                           fontFamily: 'Proxima Nova',
                           fontStyle: FontStyle.normal,
-                          fontSize: 14,
+                          fontSize: 24,
                         ),
                       ),
                       Text(
-                        "Album or camera?",
+                        "\nAlbum or camera?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.grey[800],
