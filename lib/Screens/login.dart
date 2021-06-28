@@ -70,172 +70,176 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+      body: Center(
+        child: Stack(
+          children: [
+            
+            // Background
+            Container(),
 
-              SizedBox(
-                height: 145,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
 
-              RichText(
-                textAlign: TextAlign.right,
-                text: TextSpan(
-                  text: "vegemarket",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: "Nexa",
-                    fontWeight: FontWeight.w700,
-                    fontSize: 75,
-                    height: 0.5,
-                  ),
-                  children: <InlineSpan>[
-                    TextSpan(
-                      text: "\npowered by JOMAHEK",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Proxima Nova",
-                      ),
+                RichText(
+                  textAlign: TextAlign.right,
+                  text: TextSpan(
+                    text: "vegemarket",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: "Gilbert Color",
+                      fontSize: 75,
+                      height: 0.5,
                     ),
-                  ],
-                ), 
-              ),
-
-              SizedBox(
-                height: 45,
-              ),
-
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(50, 20, 50, 0),
-                      child: TextFormField(
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your e-mail';
-                          }
-                          return null;
-                        },
-                        controller:
-                            _emailTextController,
-                        cursorColor: Color(0xfff77272),
+                    children: <InlineSpan>[
+                      TextSpan(
+                        text: "\npowered by JOMAHEK",
                         style: TextStyle(
-                            fontFamily: 'Proxima Nova',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: Colors.white54
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.fromLTRB(
-                                  30, 0, 30, 0),
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(
-                              Radius.circular(100.0),
-                            ),
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          hintStyle: TextStyle(
-                              color: Colors.white24),
-                          hintText: "Email",
-                          fillColor: Colors.grey[600],
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: "Proxima Nova",
                         ),
                       ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(50, 10, 50, 0),
-                      child: TextFormField(
-                        cursorColor: Color(0xfff77272),
-                        validator: (String? value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                        controller: _pwTextController,
-                        style: TextStyle(
-                            fontFamily: 'Proxima Nova',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: Colors.white54),
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.fromLTRB(30, 0, 30, 0),
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(100.0),
-                            ),
-                            borderSide: BorderSide.none,
-                          ),
-                          filled: true,
-                          hintStyle: TextStyle(
-                              color: Colors.white24),
-                          hintText: "Password",
-                          fillColor: Colors.grey[600],
-                        ),
-                      ),
-                    ),
-                  ]
-                )
-              ),
-
-                SizedBox(
-                  height: 15,
+                    ],
+                  ), 
                 ),
 
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () => {
-                      // TODO: Add login firebase function here
-                      _signInWithEmailAndPassword(context)
-                    }, 
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(Size(100, 35)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
-                    ),
-                    child: Text(
-                      "LOGIN",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'Proxima Nova',
-                        fontWeight: FontWeight.w700
+                SizedBox(
+                  height: 45,
+                ),
+
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(50, 20, 50, 0),
+                        child: TextFormField(
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please enter your e-mail';
+                            }
+                            return null;
+                          },
+                          controller:
+                              _emailTextController,
+                          cursorColor: Color(0xfff77272),
+                          style: TextStyle(
+                              fontFamily: 'Proxima Nova',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.white54
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(
+                                    30, 0, 30, 0),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(
+                                Radius.circular(100.0),
+                              ),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            hintStyle: TextStyle(
+                                color: Colors.white24),
+                            hintText: "Email",
+                            fillColor: Colors.grey[600],
+                          ),
+                        ),
                       ),
-                    )
-                  ),
-                  ElevatedButton(
-                    onPressed: () => {
-                      // TODO: Add login firebase function here
-                      Navigator.of(context).pop()
-                    }, 
-                    style: ButtonStyle(
-                      fixedSize: MaterialStateProperty.all(Size(100, 35)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
-                    ),
-                    child: Text(
-                      "BACK",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'Proxima Nova',
-                        fontWeight: FontWeight.w700,
+
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(50, 10, 50, 0),
+                        child: TextFormField(
+                          cursorColor: Color(0xfff77272),
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+                            return null;
+                          },
+                          controller: _pwTextController,
+                          style: TextStyle(
+                              fontFamily: 'Proxima Nova',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.white54),
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(30, 0, 30, 0),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(100.0),
+                              ),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            hintStyle: TextStyle(
+                                color: Colors.white24),
+                            hintText: "Password",
+                            fillColor: Colors.grey[600],
+                          ),
+                        ),
                       ),
-                    )
+                    ]
+                  )
+                ),
+
+                  SizedBox(
+                    height: 15,
                   ),
-                ]
-              ),
-            ],
-          ),
+
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () => {
+                        // TODO: Add login firebase function here
+                        _signInWithEmailAndPassword(context)
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red[300]),
+                        fixedSize: MaterialStateProperty.all(Size(100, 35)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
+                      ),
+                      child: Text(
+                        "LOGIN",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w700
+                        ),
+                      )
+                    ),
+                    ElevatedButton(
+                      onPressed: () => {
+                        // TODO: Add login firebase function here
+                        Navigator.of(context).pop()
+                      }, 
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red[300]),
+                        fixedSize: MaterialStateProperty.all(Size(100, 35)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
+                      ),
+                      child: Text(
+                        "BACK",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      )
+                    ),
+                  ]
+                ),
+              ],
+            ),
+          ],
         ),
       )
     );

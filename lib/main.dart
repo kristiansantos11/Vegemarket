@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'vegemarket',
         builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+          BouncingScrollWrapper.builder(context, widget),
           maxWidth: 1920,
           minWidth: 480,
           defaultScale: true,
           breakpoints: [
-            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(480, name: MOBILE),
             ResponsiveBreakpoint.autoScale(800, name: TABLET),
             ResponsiveBreakpoint.resize(1000, name: DESKTOP),
           ],

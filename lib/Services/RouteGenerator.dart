@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
+import 'package:vegemarket/Screens/askProfilePicture.dart';
 import 'package:vegemarket/Screens/initial_screen.dart';
 import 'package:vegemarket/Screens/login.dart';
 import 'package:vegemarket/Screens/main_menu.dart';
 import 'package:vegemarket/Screens/register.dart';
+import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
 
-Route<Null>? getGenerateRoute(RouteSettings settings){
+Route<Null> getGenerateRoute(RouteSettings settings){
   final arguments = settings.arguments;
 
   switch(settings.name){
 
     case InitialScreen.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: InitialScreen.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -22,6 +26,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case Login.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: Login.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -32,6 +37,7 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case Register.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: Register.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
@@ -42,10 +48,37 @@ Route<Null>? getGenerateRoute(RouteSettings settings){
 
     case MainMenu.routeName:
       return PageRouteBuilder(
+        settings: RouteSettings(name: MainMenu.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
             child: MainMenu(),
+          );
+        }
+      );
+    
+    case AskProfilePicture.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: AskProfilePicture.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: AskProfilePicture(),
+          );
+        }
+      );
+
+    case VendorPage.routeName:
+      final args = settings.arguments as VendorScreenArguments;
+      return PageRouteBuilder(
+        settings: RouteSettings(name: VendorPage.routeName),
+        pageBuilder:(context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: VendorPage(
+              uid: args.uid,
+              name: args.name,
+            ),
           );
         }
       );

@@ -3,7 +3,7 @@ import 'package:vegemarket/Screens/login.dart';
 import 'package:vegemarket/Screens/register.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({ Key? key }) : super(key: key);
+  const StartScreen({ Key key }) : super(key: key);
 
   static const routeName = '/start';
 
@@ -35,7 +35,7 @@ class _StartScreenState extends State<StartScreen> {
                       style: TextStyle(
                         fontFamily: "Gilbert Color",
                         color: Colors.black,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                         fontSize: 75,
                         height: 0.7,
                       ),
@@ -45,6 +45,7 @@ class _StartScreenState extends State<StartScreen> {
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "Proxima Nova",
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ],
@@ -72,7 +73,7 @@ class _StartScreenState extends State<StartScreen> {
                                 overlayColor:
                                   MaterialStateProperty.resolveWith<Color>(
                                     (Set<MaterialState>states) {
-                                      if (states.contains(MaterialState.hovered)) return Colors.red[500]!;
+                                      if (states.contains(MaterialState.hovered)) return Colors.red[500];
                                       if (states.contains(MaterialState.pressed)) return Colors.white;
                                       return Color.fromARGB(255,255,131,131); // Defer to the widget's default.
                                     }
@@ -121,7 +122,7 @@ class _StartScreenState extends State<StartScreen> {
                             overlayColor:
                                 MaterialStateProperty.resolveWith<Color>(
                                   (Set<MaterialState>states) {
-                                    if (states.contains(MaterialState.hovered)) return Colors.red[500]!;
+                                    if (states.contains(MaterialState.hovered)) return Colors.red[500];
                                     if (states.contains(MaterialState.pressed)) return Colors.white;
                                     return Color.fromARGB(255,255,131,131); // Defer to the widget's default.
                                   }
