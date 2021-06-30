@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
-  void _signInWithEmailAndPassword(ctx) async {
+  void _signInWithEmailAndPassword(BuildContext ctx) async {
     var _success = true;
     var outMsg;
     if ((_emailTextController.text.isEmpty) ||

@@ -80,7 +80,14 @@ Route<Null> getGenerateRoute(RouteSettings settings){
               name: args.name,
             ),
           );
-        }
+        },
+        transitionDuration: Duration(milliseconds: 500),
+        transitionsBuilder: (context, animation, secondaryAnimation, child){
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
       );
   }
   return null;
