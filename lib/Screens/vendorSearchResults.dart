@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class VendorSearchResults extends StatefulWidget {
   const VendorSearchResults({ Key key }) : super(key: key);
 
+  static const routeName = "/search_results";
+
   @override
   _VendorSearchResultsState createState() => _VendorSearchResultsState();
 }

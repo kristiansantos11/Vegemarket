@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vegemarket/Model/userData.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
+import 'package:vegemarket/Screens/vendorSearchResults.dart';
 import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
 import 'package:vegemarket/Services/database/FetchShopList.dart';
 
@@ -35,84 +36,41 @@ class _ShopsPageState extends State<ShopsPage> {
             child: Column(
               children: [
 
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
 
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
-                        child: TextFormField(
-                          key: formKey,
-                          validator: (val){
-                            if (val == null){
-                              return "You did not enter anything in the freedom wall.";
-                            } else {
-                              textMessage = val;
-                              return null;
-                            }
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            fixedSize: MaterialStateProperty.all(Size(420,20)),
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)))
+                          ),
+                          onPressed: (){
+                            Navigator.of(context).pushNamed(VendorSearchResults.routeName);
                           },
-                          controller: _controller,
-                          onChanged: (text) {
-                            //print("Current text is: $text");
-                            textMessage = text;
-                          },
-                          cursorColor: Color(0xfff77272),
-                            style: TextStyle(
-                                fontFamily: 'Proxima Nova',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Color(0xffff8383),
-                            ),
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(
-                                  Radius.circular(100.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Search vendors here!",
+                                style: TextStyle(
+                                  color: Colors.amber[700],
+                                  fontFamily: "Proxima Nova",
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
                                 ),
-                                borderSide: BorderSide.none,
                               ),
-                              filled: true,
-                              hintStyle: TextStyle(
-                                  color: Colors.red[300]),
-                              hintText: "Write anything here!",
-                              fillColor: Colors.white,
-                            ),
+                              Icon(Icons.search, color: Colors.amber[700]),
+                            ],
+                          ),
                         ),
-                      ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                            child: TextButton.icon(
-                              onPressed: () {
-                                if (_controller.value.text != "")
-                                {
-                                  // TODO: What happens if the send button is pressed?
-                                }
-                              },
-                              icon: Icon(Icons.textsms_rounded, color: Colors.white),
-                              label: Text("Write", style: TextStyle(color: Colors.white, fontFamily: 'Proxima Nova'))
-                            )
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                            child: TextButton.icon(
-                              onPressed: () {
-                                _controller.clear();
-                              },
-                              icon: Icon(Icons.clear_rounded, color: Colors.white),
-                              label: Text("Clear", style: TextStyle(color: Colors.white, fontFamily: 'Proxima Nova'))
-                            )
-                          ),
-                        ]
-                      ),
-
-                    ],
-                  ),
+                      ],
+                    ),
+                ),
 
                 Expanded(
                   child: GridView.builder(

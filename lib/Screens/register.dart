@@ -440,6 +440,11 @@ class _RegisterState extends State<Register> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: DateTimeField(
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "Proxima Nova",
+                                fontWeight: FontWeight.w700,
+                              ),
                               format: DateFormat("yyyy-MM-dd"),
                               onShowPicker: (context, currentValue) {
                                 return showDatePicker(
@@ -518,47 +523,6 @@ class _RegisterState extends State<Register> {
                                         hintText: "Contact Number",
                                         fillColor: Colors.grey[600],
                                       ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextFormField(
-                              validator: (val) {
-                                if(val=="")
-                                {
-                                  return "Empty Gender";
-                                }
-                                else
-                                {
-                                  gender = val;
-                                  return null;
-                                }
-                              },
-                              cursorColor: Color(0xfff77272),
-                                        style: TextStyle(
-                                            fontFamily: 'Proxima Nova',
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18,
-                                            color: Colors.white
-                                        ),
-                                        decoration: InputDecoration(
-                                          contentPadding:
-                                              EdgeInsets.fromLTRB(
-                                                  20, 10, 20, 10),
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.all(
-                                              Radius.circular(100.0),
-                                            ),
-                                            borderSide: BorderSide.none,
-                                          ),
-                                          filled: true,
-                                          hintStyle: TextStyle(
-                                              color: Colors.grey[400]),
-                                          hintText: "Gender",
-                                          fillColor: Colors.grey[600],
-                                        ),
                             ),
                           ),
 

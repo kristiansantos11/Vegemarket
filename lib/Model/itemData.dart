@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:meta/meta.dart';
 
 class ItemData{
@@ -7,12 +8,16 @@ class ItemData{
   String description;
   int rating;
   String comment;
+  File itemPicture;
+  String itemPictureLink;
 
   ItemData({
     @required this.storeUID,
     @required this.name,
     @required this.storeName,
     @required this.description,
+    this.itemPicture,
+    this.itemPictureLink,
     this.rating,
     this.comment
   });
@@ -24,7 +29,8 @@ class ItemData{
       'storeName' : this.storeName,
       'description' : this.description,
       'rating' : this.rating,
-      'comment' : this.comment
+      'comment' : this.comment,
+      'itemPictureLink' : this.itemPictureLink
     };
   }
 }

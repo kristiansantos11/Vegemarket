@@ -6,6 +6,7 @@ import 'package:vegemarket/Screens/initial_screen.dart';
 import 'package:vegemarket/Screens/login.dart';
 import 'package:vegemarket/Screens/main_menu.dart';
 import 'package:vegemarket/Screens/register.dart';
+import 'package:vegemarket/Screens/vendorSearchResults.dart';
 import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
 
 Route<Null> getGenerateRoute(RouteSettings settings){
@@ -89,6 +90,18 @@ Route<Null> getGenerateRoute(RouteSettings settings){
           );
         },
       );
+
+    case VendorSearchResults.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: VendorSearchResults.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: VendorSearchResults(),
+          );
+        }
+      );
+    
   }
   return null;
 }
