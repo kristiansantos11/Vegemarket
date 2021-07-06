@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
+import 'package:vegemarket/Screens/ScreenArguments/VendorSearchArguments.dart';
 import 'package:vegemarket/Screens/askProfilePicture.dart';
 import 'package:vegemarket/Screens/initial_screen.dart';
 import 'package:vegemarket/Screens/login.dart';
 import 'package:vegemarket/Screens/main_menu.dart';
+import 'package:vegemarket/Screens/message_screen.dart';
 import 'package:vegemarket/Screens/register.dart';
 import 'package:vegemarket/Screens/vendorSearchResults.dart';
 import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
@@ -92,16 +94,30 @@ Route<Null> getGenerateRoute(RouteSettings settings){
       );
 
     case VendorSearchResults.routeName:
+      final args = settings.arguments as VendorSearchArguments;
       return PageRouteBuilder(
         settings: RouteSettings(name: VendorSearchResults.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
-            child: VendorSearchResults(),
+            child: VendorSearchResults(
+              nameSearch: args.name
+            ),
           );
         }
       );
     
+    case MessageScreen.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: MessageScreen.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: MessageScreen(),
+          );
+        }
+      );
+
   }
   return null;
 }

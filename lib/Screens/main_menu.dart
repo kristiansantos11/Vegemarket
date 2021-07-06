@@ -71,7 +71,8 @@ class _MainMenuState extends State<MainMenu> {
             IconButton(
               icon: Icon(Icons.shopping_cart),
               color: Colors.green[600],
-              onPressed: (){},
+              onPressed: (){
+              },
               iconSize: 30,
             ),
           ],

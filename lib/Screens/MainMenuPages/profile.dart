@@ -24,14 +24,41 @@ class _ProfileState extends State<Profile> {
           color: Colors.red[300],
         ),
         child: Center(
-          child: Text(
-            "Profile",
-            style: TextStyle(
-              fontFamily: "Nexa",
-              fontWeight: FontWeight.w700,
-              fontSize: 35,
-              color: Colors.white,
-            ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.white
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20,20,0,20),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            child: Image.asset("assets/img/default_profile_picture.jpg"),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20,20,50,20),
+                        child: Text(
+                          "Name: " + "\n" +
+                          "Username: " + "\n"
+                        ),
+                      ),
+                    ],
+                  )
+                ),
+              ),
+            ],
           ),
         ),
       ),

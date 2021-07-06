@@ -1,32 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class VendorSearchResults extends StatefulWidget {
-  const VendorSearchResults({ Key key }) : super(key: key);
+  final String nameSearch;
+  const VendorSearchResults({ Key key, this.nameSearch}) : super(key: key);
 
   static const routeName = "/search_results";
 
   @override
-  _VendorSearchResultsState createState() => _VendorSearchResultsState();
+  _VendorSearchResultsState createState() => _VendorSearchResultsState(nameSearch: this.nameSearch);
 }
 
 class _VendorSearchResultsState extends State<VendorSearchResults> {
+  String nameSearch;
+  _VendorSearchResultsState({this.nameSearch});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Search results"),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.green[600],
-            onPressed: (){
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
+        backgroundColor: Colors.amber[800],
       ),
       body: SafeArea(
-        child: Text("hello"),
+        child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(child: Text("Test")),
+              ],
+            ),
+
       ),
     );
   }
