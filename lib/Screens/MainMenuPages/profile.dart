@@ -73,11 +73,11 @@ class _ProfileState extends State<Profile> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8),
-                            child: Text('Name: ' +
+                            child: Text('Name: ' + snapshot.data["name"] +
                                 ' \n'
-                                    'Username: ' +
+                                    'Username: ' + snapshot.data["username"] + 
                                 '\n'
-                                    'Contact No: '),
+                                    'Contact No: ' + snapshot.data["contactNumber"]),
                           ),
                         ],
                       ),
