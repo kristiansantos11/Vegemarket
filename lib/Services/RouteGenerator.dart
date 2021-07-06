@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorSearchArguments.dart';
+import 'package:vegemarket/Screens/add_item_screen.dart';
+import 'package:vegemarket/Screens/askItemPicture.dart';
 import 'package:vegemarket/Screens/askProfilePicture.dart';
 import 'package:vegemarket/Screens/initial_screen.dart';
 import 'package:vegemarket/Screens/login.dart';
@@ -103,6 +105,28 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             child: VendorSearchResults(
               nameSearch: args.name
             ),
+          );
+        }
+      );
+
+     case AddItem.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: AddItem.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: AddItem(),
+          );
+        }
+      );
+
+      case AskItemPicture.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: AskItemPicture.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: AskItemPicture(),
           );
         }
       );
