@@ -15,7 +15,7 @@ import 'package:vegemarket/Model/userData.dart';
 import 'package:vegemarket/Screens/askProfilePicture.dart';
 import 'package:vegemarket/Screens/initial_screen.dart';
 import 'package:vegemarket/Services/SizeGetter.dart';
-import 'package:vegemarket/Services/database/RegisterAccount.dart';
+import 'package:vegemarket/Services/database/Database.dart';
 
 //debug dont remove this:
 // import '../services/database/FetchUserData.dart';
@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
         isSeller: 0,
       );
 
-      response = await Database().register(_user);
+      response = await Database().registerUser(_user);
 
       print("$response"); //debug - *must be null to be a success
       if(response==null)

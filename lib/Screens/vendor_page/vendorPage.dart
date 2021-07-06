@@ -21,7 +21,6 @@ class _VendorPageState extends State<VendorPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(uid);
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("Basic Info").doc(uid).snapshots(),

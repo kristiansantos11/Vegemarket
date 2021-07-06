@@ -57,12 +57,68 @@ class CloudStorage{
     }
   }
 
+  Future<void> uploadItemPicture({File file, @required String uid, @required String name, bool def = false}) async {
+    if(def){
+      file = await ImageUtils.imageToFile(imageName: 'default_profile_picture', ext: 'jpg');
+    }
+
+    if (!def && file == null) {
+      print("No file was selected. Ignoring method.");
+      return null;
+    }
+
+    // Create a Reference to the file
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('profile')
+        .child(uid)
+        .child(name)
+        .child('/item_picture.jpg');
+
+    print("Reference created.");
+
+    final metadata = SettableMetadata(
+        contentType: 'image/jpeg',
+        customMetadata: {'picked-file-path': file.path});
+
+    if (kIsWeb) {
+      await ref.putData(await file.readAsBytes(), metadata);
+    } else {
+      print("Path temporarily stored at: ${file.path}");
+      await ref.putFile(file, metadata);
+      print("Upload Done.");
+      await getItemPictureLink(uid: uid, name: name).then(
+        (String link) async {
+          if(!def){
+            await FirebaseFirestore.instance
+                                   .collection('Basic Info')
+                                   .doc(uid)
+                                   .collection("items")
+                                   .doc(name)
+                                   .set({'itemPictureLink' : link}, SetOptions(merge: true));
+          }
+        }
+      );
+    }
+  }
+
   Future<String> getProfilePictureLink({@required String uid}) async {
     Reference ref = FirebaseStorage.instance
         .ref()
         .child('profile')
         .child(uid)
         .child('/profile_picture.jpg');
+    
+    return ref.getDownloadURL();
+  }
+
+  Future<String> getItemPictureLink({@required String uid, @required String name}) async {
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('profile')
+        .child(uid)
+        .child(name)
+        .child('/item_picture.jpg');
     
     return ref.getDownloadURL();
   }

@@ -86,7 +86,7 @@ class _MainMenuState extends State<MainMenu> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
 
-                // # Home button
+                // Home button
                 ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -107,6 +107,8 @@ class _MainMenuState extends State<MainMenu> {
                             (currentPage == 0) ? Colors.blue[300] : Colors.grey)),
                     child: Icon(Icons.home_filled, color: Colors.white)
                 ),
+
+                // Vendor list button
                 ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -127,7 +129,8 @@ class _MainMenuState extends State<MainMenu> {
                             (currentPage == 1) ? Colors.amber[700] : Colors.grey)),
                     child: Icon(Icons.store, color: Colors.white, size: 27)
                 ),
-                // # Calendar button
+
+                // Message button
                 ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -147,7 +150,8 @@ class _MainMenuState extends State<MainMenu> {
                         backgroundColor: MaterialStateProperty.all(
                             (currentPage == 2) ? Colors.green[500] : Colors.grey)),
                     child: Icon(Icons.message_outlined, color: Colors.white)),
-                // # Freedom Wall Button
+
+                // Profile Button
                 ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -167,7 +171,8 @@ class _MainMenuState extends State<MainMenu> {
                         backgroundColor: MaterialStateProperty.all(
                             (currentPage == 3) ? Color(0xffff8383) : Colors.grey)),
                     child: Icon(Icons.person, color: Colors.white)),
-                // # App Settings button
+
+                // App Settings button
                 ElevatedButton(
                   onPressed: () {
                     setState(() {

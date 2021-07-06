@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:vegemarket/Model/itemData.dart';
 import 'package:vegemarket/Model/userData.dart';
 import 'package:vegemarket/Services/cloud_storage/CloudStorage.dart';
 
@@ -11,7 +14,7 @@ class Database
   final FirebaseAuth auth = FirebaseAuth.instance;
   final CollectionReference basicInfo = FirebaseFirestore.instance.collection('Basic Info');
 
-  Future register(UserData user) async
+  Future registerUser(UserData user) async
   {
     try
     {
@@ -25,6 +28,27 @@ class Database
       );
       user.profilePictureLink = await CloudStorage().getProfilePictureLink(uid: user.uid);
       await basicInfo.doc("${user.uid}").set(user.returnUserData());
+      return null;
+    }
+    catch(e)
+    {
+      return(e.toString());
+    }
+  }
+
+  Future registerItem(ItemData item) async
+  {
+    try
+    {
+      User user = FirebaseAuth.instance.currentUser;
+      await CloudStorage().uploadItemPicture(
+        file: File('assets/img/default_profile_picture.jpg'),
+        uid: user.uid,
+        name: item.name,
+        def: true,
+      );
+      item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.name);
+      await basicInfo.doc("${user.uid}").collection("items").doc(item.name).set(item.returnItemData());
       return null;
     }
     catch(e)

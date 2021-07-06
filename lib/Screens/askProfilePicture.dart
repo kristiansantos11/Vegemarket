@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:vegemarket/Screens/dialog/newProfilePictureDialog.dart';
+import 'package:vegemarket/Screens/dialog/newPictureUploadDialog.dart';
 import 'package:vegemarket/Screens/initial_screen.dart';
 
 class AskProfilePicture extends StatefulWidget {

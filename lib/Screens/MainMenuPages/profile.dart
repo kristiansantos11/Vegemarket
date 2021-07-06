@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:vegemarket/Model/userData.dart';
-import 'package:vegemarket/Screens/dialog/newProfilePictureDialog.dart';
+import 'package:vegemarket/Screens/dialog/newPictureUploadDialog.dart';
 import 'package:vegemarket/Services/AuthenticationService.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Screens/add_item_screen.dart';
