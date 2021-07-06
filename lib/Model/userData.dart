@@ -31,12 +31,12 @@ class UserData{
 
   Map<String, dynamic> returnUserData(){
     return {
-      'uid' : this.uid,
-      'name' : this.name,
-      'username' : this.username,
+      'uid' : this.uid.trim(),
+      'name' : this.name.trim(),
+      'username' : this.username.trim(),
       'birthdate' : this.birthdate,
-      'contactNumber' : this.contactNumber,
-      'profile_picture' : this.profilePictureLink,
+      'contactNumber' : this.contactNumber.trim(),
+      'profile_picture' : this.profilePictureLink.trim(),
       'isSeller' : this.isSeller,
     };
   }

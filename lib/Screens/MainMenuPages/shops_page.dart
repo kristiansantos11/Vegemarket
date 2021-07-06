@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vegemarket/Model/userData.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
@@ -5,6 +6,7 @@ import 'package:vegemarket/Screens/ScreenArguments/VendorSearchArguments.dart';
 import 'package:vegemarket/Screens/vendorSearchResults.dart';
 import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
 import 'package:vegemarket/Services/database/FetchShopList.dart';
+import 'package:provider/provider.dart';
 
 class ShopsPage extends StatefulWidget {
   const ShopsPage({ Key key }) : super(key: key);
@@ -20,10 +22,14 @@ class _ShopsPageState extends State<ShopsPage> {
 
   @override
   Widget build(BuildContext context) {
+    User user = context.watch<User>();
     var _controller = TextEditingController();
     return StreamBuilder<List<UserData>>(
-      stream: SellerListGetter().sellerListData,
+      stream: SellerListGetter(user.uid).sellerListData,
       builder: (context, snapshot) {
+        if(user==null){
+          return Center(child: CircularProgressIndicator());
+        }
         if(snapshot.connectionState == ConnectionState.waiting){
           return CircularProgressIndicator();
         } else {

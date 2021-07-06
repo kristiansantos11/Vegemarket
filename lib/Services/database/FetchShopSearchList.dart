@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vegemarket/Model/userData.dart';
 
-class SellerListGetter
+class SellerListSearchGetter
 {
   final CollectionReference sellerList = FirebaseFirestore.instance.collection("Basic Info");
-  final String ignoreName;
-
-  SellerListGetter(this.ignoreName);
+  final String userNameSearch;
+  
+  SellerListSearchGetter(this.userNameSearch);
 
   List<UserData> seller(QuerySnapshot snapshot)
   {
@@ -23,7 +23,7 @@ class SellerListGetter
     }).toList();
   }
 
-  Stream<List<UserData>> get sellerListData {
-    return sellerList.where("uid", isNotEqualTo: ignoreName).snapshots().map(seller);
+  Stream<List<UserData>> get sellerListSearchData {
+    return sellerList.where("username", isEqualTo: userNameSearch).get().asStream().map(seller);
   }
 }
