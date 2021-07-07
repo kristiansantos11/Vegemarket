@@ -50,7 +50,10 @@ class CloudStorage{
       await getProfilePictureLink(uid: uid).then(
         (String link) async {
           if(!def){
-            await FirebaseFirestore.instance.collection('Basic Info').doc(uid).set({'profile_picture' : link}, SetOptions(merge: true));
+            await FirebaseFirestore.instance
+                                   .collection('Basic Info')
+                                   .doc(uid)
+                                   .set({'profile_picture' : link}, SetOptions(merge: true));
           }
         }
       );
