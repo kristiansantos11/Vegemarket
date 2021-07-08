@@ -86,6 +86,7 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: Container(
+                      height: 500,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.white30,
@@ -98,10 +99,34 @@ class _ProfileState extends State<Profile> {
                             padding: const EdgeInsets.all(20),
                             child: Container(
                               alignment: Alignment.center,
-                              height: 450,
-                              width: 200,
+                              height: 50,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blueGrey[300],
+                                    spreadRadius: 5,
+                                    blurRadius: 8,
+                                    offset: Offset.fromDirection(1, 5),
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(40),
+                                ),
+                                gradient: LinearGradient(
+                                  colors: [Colors.blue[900], Colors.blue[700]],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                               ),
                               child: Text(
-                                'You haven\'t sold anything yet. \n inaaral ko pa yung pag integrate ng firebase sorry :)',
+                                'You haven\'t sold anything yet.',
+                                style: TextStyle(
+                                  fontFamily: 'Proxima Nova',
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -112,6 +137,11 @@ class _ProfileState extends State<Profile> {
                   ElevatedButton(
                     child: Text('Add Item'),
                     style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
                       backgroundColor: MaterialStateProperty.all(Colors.blue[900]),
                     ),
                     onPressed: () {
