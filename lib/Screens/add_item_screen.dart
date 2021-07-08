@@ -167,7 +167,7 @@ class _AddItemState extends State<AddItem> {
                             itemPicture:
                                 File('assets/img/default_profile_picture.jpg'),
                           );
-                          Database().registerItem(item);
+                          Database().registerItem(snapshot.data ['username'], item);
                           Navigator.of(context)
                               .pushNamed(AskItemPicture.routeName);
                           _itemNameController.clear();
