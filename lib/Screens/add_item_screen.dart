@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -75,21 +76,20 @@ class _AddItemState extends State<AddItem> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(50),
+                            padding: const EdgeInsets.all(20),
                             child: TextFormField(
                               controller: _itemNameController,
                               decoration: InputDecoration(
                                 hintText: 'item name',
                                 labelText: 'Item Name',
                               ),
-                              //controller: ,
                             ),
                           ),
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(70),
-                                topRight: Radius.circular(70),
+                                //topRight: Radius.circular(70),
                                 bottomLeft: Radius.circular(12),
                                 bottomRight: Radius.circular(12),
                               ),
@@ -109,6 +109,7 @@ class _AddItemState extends State<AddItem> {
                                     labelText: "Item Description",
                                     hintText: "Item Desription",
                                   ),
+                                  selectionHeightStyle: BoxHeightStyle.max,
                                 ),
                               ),
                             ),
@@ -123,6 +124,11 @@ class _AddItemState extends State<AddItem> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            ),
+                        ),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.blue)),
                       onPressed: () {
@@ -132,6 +138,11 @@ class _AddItemState extends State<AddItem> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            ),
+                        ),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.blue)),
                       onPressed: () {
@@ -144,6 +155,8 @@ class _AddItemState extends State<AddItem> {
                         );
                         Database().registerItem(item);
                         Navigator.of(context).pushNamed(AskItemPicture.routeName);
+                        _itemNameController.clear();
+                        _descriptionController.clear();
                       },
                       child: Text('Next'),
                     ),
