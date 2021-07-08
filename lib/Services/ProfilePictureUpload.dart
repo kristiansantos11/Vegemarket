@@ -79,7 +79,7 @@ Future<File> onAlbumPickItemPicture({@required ImagePicker imagePicker,
                           }) async {
   User user = FirebaseAuth.instance.currentUser;
   File image;
-  await imagePicker.getImage(source: ImageSource.camera).then((_image){
+  await imagePicker.getImage(source: ImageSource.gallery).then((_image){
     image = File(_image.path);
   }).then((_) async {
     await ImageCropper.cropImage(
