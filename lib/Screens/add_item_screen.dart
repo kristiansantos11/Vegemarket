@@ -87,31 +87,31 @@ class _AddItemState extends State<AddItem> {
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(70),
-                                  //topRight: Radius.circular(70),
-                                  bottomLeft: Radius.circular(12),
-                                  bottomRight: Radius.circular(12),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(70),
+                                    //topRight: Radius.circular(70),
+                                    bottomLeft: Radius.circular(12),
+                                    bottomRight: Radius.circular(12),
+                                  ),
+                                  color: Colors.white24,
                                 ),
-                                color: Colors.white24,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(50),
-                                child: Container(
-                                  width: 400,
-                                  height: 300,
-                                  //color: Colors.transparent,
-                                  child: TextField(
-                                    controller: _descriptionController,
-                                    maxLength: 250,
-                                    maxLines: 5,
-                                    decoration: InputDecoration(
-                                      labelText: "Item Description",
-                                      hintText: "Item Desription",
+                                child: Padding(
+                                  padding: const EdgeInsets.all(50),
+                                  child: Container(
+                                    //color: Colors.transparent,
+                                    child: TextField(
+                                      controller: _descriptionController,
+                                      maxLength: 250,
+                                      maxLines: 5,
+                                      decoration: InputDecoration(
+                                        labelText: "Item Description",
+                                        hintText: "Item Desription",
+                                      ),
+                                      selectionHeightStyle: BoxHeightStyle.max,
                                     ),
-                                    selectionHeightStyle: BoxHeightStyle.max,
                                   ),
                                 ),
                               ),
@@ -152,16 +152,16 @@ class _AddItemState extends State<AddItem> {
                         onPressed: () {
                           ItemData item = ItemData(
                             name: _itemNameController.text,
+                            vendorUID: user.uid,
                             description: _descriptionController.text,
                             rating: [],
                             comment: [],
                             username: snapshot.data['username'],
-                            itemPicture:
-                                File('assets/img/default_profile_picture.jpg'),
+                            itemPicture: File('assets/img/default_profile_picture.jpg'),
                           );
-                          Database().registerItem(snapshot.data ['username'], item);
+                          Database().registerItem(snapshot.data['username'], item);
                           Navigator.of(context)
-                              .pushNamed(AskItemPicture.routeName);
+                              .pushNamed(AskItemPicture.routeName, arguments: {"itemName" : _itemNameController.text});
                           _itemNameController.clear();
                           _descriptionController.clear();
                           ScaffoldMessenger.of(context).showSnackBar(

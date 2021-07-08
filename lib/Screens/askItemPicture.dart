@@ -10,15 +10,19 @@ import 'package:vegemarket/Screens/initial_screen.dart';
 // TODO: Screen arguments for item name
 
 class AskItemPicture extends StatefulWidget {
-  const AskItemPicture({Key key}) : super(key: key);
+  final String itemName;
+  const AskItemPicture({Key key, @required this.itemName}) : super(key: key);
 
   static const routeName = '/askItemPicture';
 
   @override
-  _AskItemPictureState createState() => _AskItemPictureState();
+  _AskItemPictureState createState() => _AskItemPictureState(itemName: this.itemName);
 }
 
 class _AskItemPictureState extends State<AskItemPicture> {
+  String itemName;
+  _AskItemPictureState({this.itemName});
+
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
@@ -87,8 +91,7 @@ class _AskItemPictureState extends State<AskItemPicture> {
                               newItemPictureDialog(
                                   context: context,
                                   user: firebaseUser,
-                                  itemName: snapshot.data['name'] +
-                                      snapshot.data["username"]);
+                                  itemName: itemName + "_" + snapshot.data["username"]);
                             }),
                         ElevatedButton(
                           style: ButtonStyle(
