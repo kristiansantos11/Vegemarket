@@ -91,7 +91,7 @@ class _StartScreenState extends State<StartScreen> {
                      width: 400,
                      decoration: BoxDecoration(
                      image: DecorationImage(
-                     image: AssetImage("assets/img/LOGO.png"),
+                     image: AssetImage("assets/img/LOGO-trans.png"),
                     ), 
                      )  
                      ),
