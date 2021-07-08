@@ -121,29 +121,6 @@ class _StartScreenState extends State<StartScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // RichText(
-                //     textAlign: TextAlign.right,
-                //     text: TextSpan(
-                //       text: "vegemarket",
-                //       style: TextStyle(
-                //         fontFamily: "Gilbert Color",
-                //         color: Colors.black,
-                //         fontWeight: FontWeight.w500,
-                //         fontSize: 75,
-                //         height: 0.7,
-                //       ),
-                //       children: <InlineSpan>[
-                //         TextSpan(
-                //           text: "\npowered by JOMAHEK",
-                //           style: TextStyle(
-                //             fontSize: 20,
-                //             fontFamily: "Proxima Nova",
-                //             fontWeight: FontWeight.w700,
-                //           ),
-                //         ),
-                //       ],
-                //     ), 
-                //   ),
                 
                 SizedBox(
                     height: 145,
