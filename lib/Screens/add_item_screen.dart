@@ -158,12 +158,11 @@ class _AddItemState extends State<AddItem> {
                                 MaterialStateProperty.all(Colors.blue)),
                         onPressed: () {
                           ItemData item = ItemData(
-                            name: _itemNameController.text +
-                                "_" +
-                                snapshot.data["username"],
+                            name: _itemNameController.text,
                             description: _descriptionController.text,
                             rating: [],
                             comment: [],
+                            username: snapshot.data['username'],
                             itemPicture:
                                 File('assets/img/default_profile_picture.jpg'),
                           );
