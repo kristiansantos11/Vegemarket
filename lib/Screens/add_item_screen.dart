@@ -147,8 +147,9 @@ class _AddItemState extends State<AddItem> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.blue)),
+                          backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                                ),
                         onPressed: () {
                           ItemData item = ItemData(
                             name: _itemNameController.text,
@@ -159,7 +160,7 @@ class _AddItemState extends State<AddItem> {
                             itemPicture:
                                 File('assets/img/default_profile_picture.jpg'),
                           );
-                          Database().registerItem(snapshot.data ['username'], item);
+                          Database().registerItem(snapshot.data['username'], item);
                           Navigator.of(context)
                               .pushNamed(AskItemPicture.routeName);
                           _itemNameController.clear();
