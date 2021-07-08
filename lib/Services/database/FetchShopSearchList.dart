@@ -18,6 +18,10 @@ class SellerListSearchGetter
         username : doc["username"] ?? '',
         contactNumber : doc["contactNumber"] ?? '',
         profilePictureLink: doc["profile_picture"] ?? '',
+        houseStreetAddress: doc["houseStreetAddress"] ?? '',
+        barangay: doc["barangay"] ?? '',
+        city: doc["city"] ?? '',
+        province: doc["province"] ?? '',
         isSeller : doc["isSeller"] ?? '',
       );
     }).toList();

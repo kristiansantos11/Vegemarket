@@ -14,6 +14,10 @@ class UserData{
   String contactNumber;
   File profilePicture;
   String profilePictureLink;
+  String houseStreetAddress;
+  String barangay;
+  String city;
+  String province;
   int isSeller;
 
   UserData({
@@ -24,6 +28,10 @@ class UserData{
     @required this.username,
     this.birthdate,
     @required this.contactNumber,
+    this.houseStreetAddress,
+    this.barangay,
+    this.city,
+    this.province,
     this.profilePicture,
     this.profilePictureLink,
     this.isSeller,
@@ -36,6 +44,10 @@ class UserData{
       'username' : this.username.trim(),
       'birthdate' : this.birthdate,
       'contactNumber' : this.contactNumber.trim(),
+      'houseStreetAddress' : this.houseStreetAddress.trim(),
+      'barangay' : this.barangay.trim(),
+      'province' : this.province.trim(),
+      'city' : this.city.trim(),
       'profile_picture' : this.profilePictureLink.trim(),
       'isSeller' : this.isSeller,
     };

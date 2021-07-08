@@ -61,7 +61,7 @@ class _AskProfilePictureState extends State<AskProfilePicture> {
                     ],
                   ),
 
-                  GestureDetector(
+                  InkWell(
                     child: Container(
                       width: 120,
                       height: 120,

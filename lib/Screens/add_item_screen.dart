@@ -26,6 +26,13 @@ class _AddItemState extends State<AddItem> {
   TextEditingController _descriptionController = new TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    _descriptionController.text = "Put item description here.";
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     User user = context.watch<User>();
     if(user==null){
@@ -80,7 +87,7 @@ class _AddItemState extends State<AddItem> {
                             child: TextFormField(
                               controller: _itemNameController,
                               decoration: InputDecoration(
-                                hintText: 'item name',
+                                hintText: 'Item name',
                                 labelText: 'Item Name',
                               ),
                             ),
