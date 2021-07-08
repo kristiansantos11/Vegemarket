@@ -13,6 +13,7 @@ class ItemListGetter {
     return snapshot.docs.map((doc) {
       return ItemData(
         name: doc['name'],
+        vendorUID: doc['vendorUID'],
         description: doc['description'],
         comment: doc['comment'],
         rating: doc['rating'],

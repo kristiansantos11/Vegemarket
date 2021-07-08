@@ -130,12 +130,15 @@ Route<Null> getGenerateRoute(RouteSettings settings){
       );
 
       case AskItemPicture.routeName:
+      final args = settings.arguments as Map<String,dynamic>;
       return PageRouteBuilder(
         settings: RouteSettings(name: AskItemPicture.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
           return ListenableProvider(
             create: (context) => animation,
-            child: AskItemPicture(),
+            child: AskItemPicture(
+              itemName: args["itemName"]
+            ),
           );
         },
         transitionDuration: Duration(milliseconds: 500),

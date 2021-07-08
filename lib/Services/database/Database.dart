@@ -44,7 +44,7 @@ class Database
       await CloudStorage().uploadItemPicture(
         file: File('assets/img/default_profile_picture.jpg'),
         uid: user.uid,
-        name: item.name,
+        name: item.name + "_" + ownerName,
         def: true,
       );
       item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.name + "_" + ownerName);
