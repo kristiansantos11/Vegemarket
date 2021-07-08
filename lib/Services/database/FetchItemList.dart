@@ -12,13 +12,11 @@ class ItemListGetter {
   List<ItemData> item(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return ItemData(
-        name: doc['name'],
-        vendorUID: doc['vendorUID'],
-        description: doc['description'],
-        comment: doc['comment'],
-        rating: doc['rating'],
-        itemPictureLink: doc['itemPictureLink'],
-        username: doc['username'],
+        name: doc['name'] ?? '',
+        vendorUID: doc['vendorUID'] ?? '',
+        description: doc['description'] ?? '',
+        itemPictureLink: doc['itemPictureLink'] ?? '',
+        username: doc['username'] ?? '',
       );
     }).toList();
   }

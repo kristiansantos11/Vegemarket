@@ -89,18 +89,23 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Expanded(
-                    child: StreamBuilder<List<ItemData>>(
+                    child: StreamBuilder(
                       stream: ItemListGetter(user).itemListData,
-                      builder: (context, items) {
-                        if(snapshot.data!=null){
+                      builder: (ctx, items) {
+                        if(items==null){
+                          return Center(child: CircularProgressIndicator());
+                        }
+                        if(items.hasData){
                           return GridView.builder(
+                            itemCount: items.data.length,
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 15.0,
                               mainAxisSpacing: 15.0,
                             ),
                             itemBuilder: (content, index){
-                              return InkWell();
+                              print(items.data[index].name);
+                              return Text(items.data[index].name);
                             }
                           );
                         }

@@ -129,7 +129,7 @@ Route<Null> getGenerateRoute(RouteSettings settings){
         },
       );
 
-      case AskItemPicture.routeName:
+    case AskItemPicture.routeName:
       final args = settings.arguments as Map<String,dynamic>;
       return PageRouteBuilder(
         settings: RouteSettings(name: AskItemPicture.routeName),
