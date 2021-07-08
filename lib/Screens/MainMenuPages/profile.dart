@@ -77,7 +77,14 @@ class _ProfileState extends State<Profile> {
                                 ' \n'
                                     'Username: ' + snapshot.data["username"] + 
                                 '\n'
-                                    'Contact No: ' + snapshot.data["contactNumber"]),
+                                    'Contact No: ' + snapshot.data["contactNumber"],
+                                    style: TextStyle(
+                                  fontFamily: 'Proxima Nova',
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                                    ),
                           ),
                         ],
                       ),

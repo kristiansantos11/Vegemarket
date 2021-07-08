@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
@@ -117,7 +119,14 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             create: (context) => animation,
             child: AddItem(),
           );
-        }
+        },
+        transitionDuration: Duration(milliseconds: 500),
+        transitionsBuilder: (context, animation, secondaryAnimation, child){
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
       );
 
       case AskItemPicture.routeName:
@@ -128,7 +137,14 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             create: (context) => animation,
             child: AskItemPicture(),
           );
-        }
+        },
+        transitionDuration: Duration(milliseconds: 500),
+        transitionsBuilder: (context, animation, secondaryAnimation, child){
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
       );
     
     case MessageScreen.routeName:
