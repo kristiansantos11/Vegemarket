@@ -1,5 +1,6 @@
 class ItemPageArguments{
   String name;
+  String username;
 
-  ItemPageArguments({this.name});
+  ItemPageArguments({this.name, this.username});
 }

@@ -104,7 +104,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 0) ? Colors.blue[300] : Colors.grey)),
+                            (currentPage == 0) ? Color(0xffff8383) : Colors.grey)),
                     child: Icon(Icons.home_filled, color: Colors.white)
                 ),
 
@@ -169,7 +169,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 3) ? Color(0xffff8383) : Colors.grey)),
+                            (currentPage == 3) ? Colors.blue[700] : Colors.grey)),
                     child: Icon(Icons.person, color: Colors.white)),
 
                 // App Settings button
@@ -255,7 +255,7 @@ class _MainMenuStartState extends State<MainMenuStart> {
                               style: TextStyle(
                                 fontSize: 40,
                                 fontFamily: "Creamy Coconut",
-                                color: Colors.blue[300],
+                                color: Color(0xffff8383),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
