@@ -147,8 +147,9 @@ class _AddItemState extends State<AddItem> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.blue)),
+                          backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                                ),
                         onPressed: () {
                           ItemData item = ItemData(
                             name: _itemNameController.text,
