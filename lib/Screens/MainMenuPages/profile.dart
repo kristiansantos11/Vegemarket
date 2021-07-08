@@ -104,7 +104,6 @@ class _ProfileState extends State<Profile> {
                               mainAxisSpacing: 15.0,
                             ),
                             itemBuilder: (content, index){
-                              print(items.data[index].name);
                               return Text(items.data[index].name);
                             }
                           );
