@@ -154,13 +154,14 @@ class _AddItemState extends State<AddItem> {
                               MaterialStateProperty.all(Colors.blue)),
                       onPressed: () {
                         ItemData item = ItemData(
-                          name: _itemNameController.text + "_" + snapshot.data["username"],
+                          name: _itemNameController.text,
+                          username: snapshot.data["username"],
                           description: _descriptionController.text,
                           rating: [],
                           comment: [],
                           itemPicture: File('assets/img/default_profile_picture.jpg'),
                         );
-                        Database().registerItem(item);
+                        Database().registerItem(snapshot.data['name'], item);
                         Navigator.of(context).pushNamed(AskItemPicture.routeName);
                         _itemNameController.clear();
                         _descriptionController.clear();
