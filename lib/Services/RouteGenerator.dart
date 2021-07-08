@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vegemarket/Screens/MainMenuPages/profile.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorScreenArguments.dart';
 import 'package:vegemarket/Screens/ScreenArguments/VendorSearchArguments.dart';
 import 'package:vegemarket/Screens/add_item_screen.dart';
@@ -157,6 +158,17 @@ Route<Null> getGenerateRoute(RouteSettings settings){
           return ListenableProvider(
             create: (context) => animation,
             child: MessageScreen(),
+          );
+        }
+      );
+
+      case Profile.routeName: //added
+      return PageRouteBuilder(
+        settings: RouteSettings(name: Profile.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: Profile(),
           );
         }
       );
