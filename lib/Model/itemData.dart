@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 class ItemData{
   String name;
+  String username;
   String description;
   List<int> rating;
   List<String> comment;
@@ -12,6 +13,7 @@ class ItemData{
   ItemData({
     @required this.name,
     @required this.description,
+    @required this.username,
     this.itemPicture,
     this.itemPictureLink,
     this.rating,
@@ -21,6 +23,7 @@ class ItemData{
   Map<String, dynamic> returnItemData(){
     return {
       'name' : this.name,
+      'username' : this.username,
       'description' : this.description,
       'rating' : this.rating,
       'comment' : this.comment,

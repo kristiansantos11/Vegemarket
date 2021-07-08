@@ -36,7 +36,7 @@ class Database
     }
   }
 
-  Future registerItem(ItemData item) async
+  Future registerItem(String ownerName, ItemData item) async
   {
     try
     {
@@ -47,8 +47,8 @@ class Database
         name: item.name,
         def: true,
       );
-      item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.name);
-      await basicInfo.doc("${user.uid}").collection("items").doc(item.name).set(item.returnItemData());
+      item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.name + "_" + ownerName);
+      await basicInfo.doc("${user.uid}").collection("items").doc(item.name + "_" + ownerName).set(item.returnItemData());
       return null;
     }
     catch(e)

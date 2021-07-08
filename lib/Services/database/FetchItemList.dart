@@ -15,7 +15,7 @@ class ItemListGetter {
         comment: doc['comment'],
         rating: doc['rating'],
         itemPictureLink: doc['itemPictureLink'],
-        //username: doc['username'],
+        username: doc['username'],
       );
     }).toList();
   }
