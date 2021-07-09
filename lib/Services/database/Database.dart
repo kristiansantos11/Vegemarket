@@ -44,11 +44,11 @@ class Database
       await CloudStorage().uploadItemPicture(
         file: File('assets/img/default_profile_picture.jpg'),
         uid: user.uid,
-        name: item.name + "_" + ownerName,
+        name: item.itemName + "_" + ownerName,
         def: true,
       );
-      item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.name + "_" + ownerName);
-      await basicInfo.doc("${user.uid}").collection("items").doc(item.name + "_" + ownerName).set(item.returnItemData());
+      item.itemPictureLink = await CloudStorage().getItemPictureLink(uid: user.uid, name: item.itemName + "_" + ownerName);
+      await basicInfo.doc("${user.uid}").collection("items").doc(item.itemName + "_" + ownerName).set(item.returnItemData());
       return null;
     }
     catch(e)

@@ -12,7 +12,7 @@ class ItemListGetter {
   List<ItemData> item(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return ItemData(
-        name: doc['name'] ?? '',
+        itemName: doc['itemName'] ?? '',
         vendorUID: doc['vendorUID'] ?? '',
         description: doc['description'] ?? '',
         itemPictureLink: doc['itemPictureLink'] ?? '',

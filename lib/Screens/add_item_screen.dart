@@ -152,7 +152,7 @@ class _AddItemState extends State<AddItem> {
                                 ),
                         onPressed: () {
                           ItemData item = ItemData(
-                            name: _itemNameController.text,
+                            itemName: _itemNameController.text,
                             vendorUID: user.uid,
                             description: _descriptionController.text,
                             rating: [],

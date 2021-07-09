@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:meta/meta.dart';
 
 class ItemData{
-  String name;
+  String itemName;
   String username;
   String description;
   List<int> rating = [];
@@ -12,7 +12,7 @@ class ItemData{
   String vendorUID;
 
   ItemData({
-    @required this.name,
+    @required this.itemName,
     @required this.description,
     @required this.username,
     @required this.vendorUID,
@@ -24,7 +24,7 @@ class ItemData{
 
   Map<String, dynamic> returnItemData(){
     return {
-      'name' : this.name,
+      'itemName' : this.itemName,
       'username' : this.username,
       'vendorUID' : this.vendorUID,
       'description' : this.description,

@@ -38,7 +38,7 @@ class _ProfileState extends State<Profile> {
                   ? Center(child: CircularProgressIndicator())
                   : StreamBuilder(
                       stream: FirebaseFirestore.instance
-                          .collection("Basic Info")
+                          .collection("Basic Info") //
                           .doc(user.uid)
                           .snapshots(),
                       builder: (context, snapshot) {
@@ -113,12 +113,13 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                               ),
-                              Expanded(
+                              Expanded( 
                                 child: StreamBuilder<List<ItemData>>(
                                     stream: ItemListGetter(user).itemListData,
                                     builder: (context, items) {
-                                      if (snapshot.data != null) {
+                                      if (items.data != null) {
                                         return GridView.builder(
+                                          itemCount:items.data.length,
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
@@ -126,12 +127,12 @@ class _ProfileState extends State<Profile> {
                                             mainAxisSpacing: 5.0,
                                           ),
                                           itemBuilder: (content, index) {
-                                            return InkWell( //added
+                                            return InkWell(
                                               onTap: () {
                                                 Navigator.of(context).pushNamed(
                                                     Profile.routeName);
                                               },
-                                              child: Center(         //added
+                                              child: Center(   
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(15),
                                                   child: Container(
@@ -140,6 +141,21 @@ class _ProfileState extends State<Profile> {
                                                       color: Colors.white,
                                                     ),
                                                     alignment: Alignment.center,
+                                                    child: Column(
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius: BorderRadius.circular(15),
+                                                          child: Container(
+                                                            width: 100,
+                                                            height: 100,
+                                                            child: FadeInImage.assetNetwork(
+                                                              placeholder: 'assets/img/default_profile_picture.jpg',
+                                                              image: items.data[index].itemPictureLink,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
