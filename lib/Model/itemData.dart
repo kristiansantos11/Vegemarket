@@ -5,8 +5,8 @@ class ItemData{
   String name;
   String username;
   String description;
-  List<int> rating;
-  List<String> comment;
+  List<int> rating = [];
+  List<String> comment = [];
   File itemPicture;
   String itemPictureLink;
   String vendorUID;

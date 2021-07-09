@@ -122,8 +122,8 @@ class _ProfileState extends State<Profile> {
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
-                                            crossAxisSpacing: 15.0,
-                                            mainAxisSpacing: 15.0,
+                                            crossAxisSpacing: 5.0,
+                                            mainAxisSpacing: 5.0,
                                           ),
                                           itemBuilder: (content, index) {
                                             return InkWell( //added
@@ -132,12 +132,15 @@ class _ProfileState extends State<Profile> {
                                                     Profile.routeName);
                                               },
                                               child: Center(         //added
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadiusDirectional.circular(12),
-                                                    color: Colors.white,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(15),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadiusDirectional.circular(12),
+                                                      color: Colors.white,
+                                                    ),
+                                                    alignment: Alignment.center,
                                                   ),
-                                                  alignment: Alignment.center,
                                                 ),
                                               ),
                                             );
