@@ -117,8 +117,12 @@ class _ProfileState extends State<Profile> {
                                 child: StreamBuilder<List<ItemData>>(
                                     stream: ItemListGetter(user).itemListData,
                                     builder: (context, items) {
-                                      if (items.data != null) {
+                                      if(items.data == null){
+                                        return Center(child: CircularProgressIndicator());
+                                      }
+                                      if (items.data.length!=0) {
                                         return GridView.builder(
+                                          
                                           itemCount:items.data.length,
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
@@ -227,7 +231,8 @@ class _ProfileState extends State<Profile> {
                                           ),
                                         ),
                                       );
-                                    }),
+                                    }
+                                  ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
