@@ -62,7 +62,7 @@ class CloudStorage{
 
   Future<void> uploadItemPicture({File file, @required String uid, @required String name, bool def = false}) async {
     if(def){
-      file = await ImageUtils.imageToFile(imageName: 'default_profile_picture', ext: 'jpg');
+      file = await ImageUtils.imageToFile(imageName: 'missing_item_icon', ext: 'jpg');
     }
 
     if (!def && file == null) {

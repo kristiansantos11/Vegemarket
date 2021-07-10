@@ -42,7 +42,7 @@ class Database
     {
       User user = FirebaseAuth.instance.currentUser;
       await CloudStorage().uploadItemPicture(
-        file: File('assets/img/default_profile_picture.jpg'),
+        file: File('assets/img/missing_item_icon.jpg'),
         uid: user.uid,
         name: item.itemName + "_" + ownerName,
         def: true,

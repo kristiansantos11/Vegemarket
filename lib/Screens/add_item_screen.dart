@@ -104,7 +104,7 @@ class _AddItemState extends State<AddItem> {
                                     //color: Colors.transparent,
                                     child: TextField(
                                       controller: _descriptionController,
-                                      maxLength: 250,
+                                      maxLength: 350,
                                       maxLines: 5,
                                       decoration: InputDecoration(
                                         labelText: "Item Description",
@@ -126,14 +126,15 @@ class _AddItemState extends State<AddItem> {
                     children: [
                       ElevatedButton(
                         style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.blue)),
+                          ),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.blue),
+                        ),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -141,15 +142,15 @@ class _AddItemState extends State<AddItem> {
                       ),
                       ElevatedButton(
                         style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
+                          ),
                           backgroundColor:
-                                MaterialStateProperty.all(Colors.blue),
-                                ),
+                              MaterialStateProperty.all(Colors.blue),
+                        ),
                         onPressed: () {
                           ItemData item = ItemData(
                             itemName: _itemNameController.text,
@@ -158,19 +159,25 @@ class _AddItemState extends State<AddItem> {
                             rating: [],
                             comment: [],
                             username: snapshot.data['username'],
-                            itemPicture: File('assets/img/default_profile_picture.jpg'),
+                            itemPicture:
+                                File('assets/img/missing_item_icon.jpg'),
                           );
-                          Database().registerItem(snapshot.data['username'], item);
+                          Database()
+                              .registerItem(snapshot.data['username'], item);
                           Navigator.of(context)
-                              .pushNamed(AskItemPicture.routeName, arguments: {"itemName" : _itemNameController.text});
+                              .pushNamed(AskItemPicture.routeName, arguments: {
+                            "itemName": _itemNameController.text
+                          });
                           _itemNameController.clear();
                           _descriptionController.clear();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
+                              duration: Duration(seconds: 2),
                               content: Row(
                                 children: [
-                                  Icon(Icons.thumb_up_sharp,
-                                  color: Colors.white,
+                                  Icon(
+                                    Icons.thumb_up_sharp,
+                                    color: Colors.white,
                                   ),
                                   SizedBox(
                                     width: 15,
