@@ -13,6 +13,7 @@ import 'package:vegemarket/Screens/login.dart';
 import 'package:vegemarket/Screens/main_menu.dart';
 import 'package:vegemarket/Screens/message_screen.dart';
 import 'package:vegemarket/Screens/register.dart';
+import 'package:vegemarket/Screens/shopping_cart.dart';
 import 'package:vegemarket/Screens/vendorSearchResults.dart';
 import 'package:vegemarket/Screens/vendor_page/vendorPage.dart';
 
@@ -162,7 +163,7 @@ Route<Null> getGenerateRoute(RouteSettings settings){
         }
       );
 
-      case Profile.routeName: //added
+    case Profile.routeName: //added
       return PageRouteBuilder(
         settings: RouteSettings(name: Profile.routeName),
         pageBuilder: (context, animation, secondaryAnimation){
@@ -171,6 +172,24 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             child: Profile(),
           );
         }
+      );
+    
+    case ShoppingCartScreen.routeName:
+      return PageRouteBuilder(
+        settings: RouteSettings(name: ShoppingCartScreen.routeName),
+        pageBuilder: (context, animation, secondaryAnimation){
+          return ListenableProvider(
+            create: (context) => animation,
+            child: ShoppingCartScreen(),
+          );
+        },
+        transitionDuration: Duration(milliseconds: 500),
+        transitionsBuilder: (context, animation, secondaryAnimation, child){
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
       );
 
   }

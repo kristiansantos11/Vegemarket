@@ -3,6 +3,7 @@ import 'package:vegemarket/Screens/MainMenuPages/messaging.dart';
 import 'package:vegemarket/Screens/MainMenuPages/profile.dart';
 import 'package:vegemarket/Screens/MainMenuPages/settings.dart';
 import 'package:vegemarket/Screens/MainMenuPages/shops_page.dart';
+import 'package:vegemarket/Screens/shopping_cart.dart';
 import 'package:vegemarket/Services/AuthenticationService.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -72,6 +73,7 @@ class _MainMenuState extends State<MainMenu> {
               icon: Icon(Icons.shopping_cart),
               color: Colors.green[600],
               onPressed: (){
+                Navigator.of(context).pushNamed(ShoppingCartScreen.routeName);
               },
               iconSize: 30,
             ),
