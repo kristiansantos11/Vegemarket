@@ -3,11 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vegemarket/Model/itemData.dart';
 
 // Self item list getter
-class ItemListGetter {
+class VendorItemListGetter {
   final CollectionReference itemList = FirebaseFirestore.instance.collection('Basic Info');
-  final User user;
+  final String userUID;
 
-  ItemListGetter(this.user);
+  VendorItemListGetter(this.userUID);
 
   List<ItemData> item(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
@@ -22,6 +22,6 @@ class ItemListGetter {
     }).toList();
   }
   Stream<List<ItemData>> get itemListData {
-    return itemList.doc(user.uid).collection("items").snapshots().map(item);
+    return itemList.doc(userUID).collection("items").snapshots().map(item);
   }
 }
