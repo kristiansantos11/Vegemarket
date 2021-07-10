@@ -1,11 +1,15 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vegemarket/Model/itemData.dart';
+import 'package:vegemarket/Screens/ScreenArguments/ItemScreenArguments.dart';
 import 'package:vegemarket/Screens/dialog/newPictureUploadDialog.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Screens/add_item_screen.dart';
+import 'package:vegemarket/Screens/items_screen.dart';
 import 'package:vegemarket/Services/database/FetchItemList.dart';
 
 class Profile extends StatefulWidget {
@@ -18,6 +22,14 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  Random rnd = new Random();
+  List<Color> colors = [Colors.pink[50], 
+                        Colors.lightGreenAccent[100], 
+                        Colors.blue[50],
+                        Colors.purple[50],
+                        Colors.teal[50],
+                        Colors.indigo[100]];
+
   @override
   Widget build(BuildContext context) {
     User user = context.watch<User>();
@@ -113,49 +125,87 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                               ),
-                              Expanded( 
+                              Expanded(
                                 child: StreamBuilder<List<ItemData>>(
                                     stream: ItemListGetter(user).itemListData,
                                     builder: (context, items) {
-                                      if(items.data == null){
-                                        return Center(child: CircularProgressIndicator());
+                                      if (items.data == null) {
+                                        return Center(
+                                            child: CircularProgressIndicator());
                                       }
-                                      if (items.data.length!=0) {
+                                      if (items.data.length != 0) {
                                         return GridView.builder(
-                                          
-                                          itemCount:items.data.length,
+                                          itemCount: items.data.length,
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
-                                            crossAxisSpacing: 5.0,
-                                            mainAxisSpacing: 5.0,
+                                            crossAxisSpacing: 2.5,
+                                            mainAxisSpacing: 2.5,
                                           ),
                                           itemBuilder: (content, index) {
                                             return InkWell(
                                               onTap: () {
-                                                Navigator.of(context).pushNamed(
-                                                    Profile.routeName);
+                                                Navigator.of(context).pushNamed(ItemsScreen.routeName, 
+                                                  arguments: ItemScreenArguments(
+                                                    itemName: items.data[index].itemName,
+                                                    vendorUID: items.data[index].vendorUID,
+                                                    username: items.data[index].username,
+                                                    description: items.data[index].description,
+                                                  ),
+                                                );
                                               },
-                                              child: Center(   
+                                              child: Center(
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(15),
+                                                  padding:
+                                                      const EdgeInsets.all(15),
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                      borderRadius: BorderRadiusDirectional.circular(12),
-                                                      color: Colors.white,
-                                                    ),
+                                                        borderRadius:
+                                                            BorderRadiusDirectional
+                                                                .circular(12),
+                                                        color: colors[rnd.nextInt(colors.length)],
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color:
+                                                                Colors.black45,
+                                                            offset: Offset
+                                                                .fromDirection(
+                                                                    1, 7),
+                                                            blurRadius: 5,
+                                                            spreadRadius: 5,
+                                                          ),
+                                                        ]),
                                                     alignment: Alignment.center,
                                                     child: Column(
+                                                      mainAxisAlignment:MainAxisAlignment.spaceEvenly,
                                                       children: [
                                                         ClipRRect(
-                                                          borderRadius: BorderRadius.circular(15),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
                                                           child: Container(
-                                                            width: 100,
+                                                            width: 150,
                                                             height: 100,
-                                                            child: FadeInImage.assetNetwork(
-                                                              placeholder: 'assets/img/default_profile_picture.jpg',
-                                                              image: items.data[index].itemPictureLink,
+                                                            child: FadeInImage
+                                                                .assetNetwork(
+                                                              placeholder:
+                                                                  'assets/img/missing_item_icon.jpg',
+                                                              image: items
+                                                                  .data[index]
+                                                                  .itemPictureLink,
                                                             ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          items.data[index]
+                                                              .itemName, //text
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Proxima Nova',
+                                                            fontStyle: FontStyle
+                                                                .normal,
+                                                            fontSize: 18,
+                                                            color: Colors.black,
                                                           ),
                                                         ),
                                                       ],
@@ -231,8 +281,7 @@ class _ProfileState extends State<Profile> {
                                           ),
                                         ),
                                       );
-                                    }
-                                  ),
+                                    }),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
