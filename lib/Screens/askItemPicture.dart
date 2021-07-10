@@ -115,7 +115,7 @@ class _AskItemPictureState extends State<AskItemPicture> {
                           ),
                           onPressed: () {
                             Navigator.of(context).popUntil(
-                                ModalRoute.withName(AddItem.routeName));
+                                ModalRoute.withName(InitialScreen.routeName));
                           },
                         ),
                       ],

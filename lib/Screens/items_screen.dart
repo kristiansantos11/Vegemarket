@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +47,9 @@ class _ItemsScreenState extends State<ItemsScreen> {
   @override
   Widget build(BuildContext context) {
     User user = context.watch<User>();
-    return StreamBuilder(
+    try
+    {  
+      return StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Basic Info')
             .doc(user.uid)
@@ -217,37 +221,42 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                   backgroundColor:
                                       MaterialStateProperty.all(Colors.blue),
                                 ),
-                                onPressed: () {
-                                  FirebaseFirestore.instance
+                                onPressed: () async {
+                                  Navigator.of(context).pop();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(
+                                            duration: Duration(seconds: 2),
+                                            content: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.check_circle_outline_outlined,
+                                                  color: Colors.white,
+                                                ),
+                                                SizedBox(
+                                                  width: 15,
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Item deleted!',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                  Future.delayed(
+                                    Duration(milliseconds: 1000),
+                                    (){
+                                      FirebaseFirestore.instance
                                       .collection('Basic Info')
                                       .doc(user.uid)
                                       .collection('items')
                                       .doc(itemName + '_' + username)
                                       .delete();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      duration: Duration(seconds: 2),
-                                      content: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.check_circle_outline_outlined,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              'Item deleted!',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    }
                                   );
-                                  Navigator.of(context).pop();
                                 },
                                 child: Text('Delete'))
                           ],
@@ -257,6 +266,14 @@ class _ItemsScreenState extends State<ItemsScreen> {
                   }),
             ),
           );
-        });
+        }
+      );
+    } catch (e) {
+      return Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
   }
 }
