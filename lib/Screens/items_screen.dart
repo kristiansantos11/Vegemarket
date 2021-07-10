@@ -12,7 +12,13 @@ and please improve the add_item_screen
 -Mark Baguio*/
 
 /*note/s:
--ikaw na bahala sa kulay/gradient*/
+-ikaw na bahala sa kulay/gradient
+
+New Task:
+-add add to cart button on items_screen
+-itemName fontcolor => white
+
+*/
 class ItemsScreen extends StatefulWidget {
   final itemName;
   final vendorUID;
@@ -130,6 +136,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                     child: Text(
                                       item.data['itemName'],
                                       style: TextStyle(
+                                        color: Colors.white,
                                         fontSize: 40,
                                         fontFamily: 'Proxima Nova',
                                         fontWeight: FontWeight.bold,
@@ -211,7 +218,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
                               child: Text('Back'),
                             ),
                             ElevatedButton(
-                                style: ButtonStyle(
+                              style: ButtonStyle(
                                   shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
