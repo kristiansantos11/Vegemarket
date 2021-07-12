@@ -104,7 +104,7 @@ class _AddItemState extends State<AddItem> {
                                     //color: Colors.transparent,
                                     child: TextField(
                                       controller: _descriptionController,
-                                      maxLength: 350,
+                                      maxLength: 1000,
                                       maxLines: 5,
                                       decoration: InputDecoration(
                                         labelText: "Item Description",

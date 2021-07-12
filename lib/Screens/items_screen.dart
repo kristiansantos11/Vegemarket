@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vegemarket/Model/itemData.dart';
 
-/*Continue working on item_screen, profile, 
+/*Continue working on item_screen, profile,
 and please improve the add_item_screen
 
 *note ko to sa sarili ko
@@ -54,15 +54,14 @@ class _ItemsScreenState extends State<ItemsScreen> {
   @override
   Widget build(BuildContext context) {
     User currentUser = context.watch<User>();
-    if(currentUser == null){
+    if (currentUser == null) {
       return Scaffold(
         body: Center(
-          child: CircularProgressIndicator()
+          child: CircularProgressIndicator(),
         ),
       );
     }
-    try
-    {  
+    try {
       return StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('Basic Info')
@@ -123,8 +122,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
                           ),
                           child: Center(
                             child: Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
                                   width: 100,
@@ -168,42 +166,45 @@ class _ItemsScreenState extends State<ItemsScreen> {
                               //   style: BorderStyle.solid,
                               // ),
                               ),
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        30, 60, 0, 0),
-                                    child: Text(
-                                      'ITEM DESCRIPTION:',
-                                      style: TextStyle(
-                                        backgroundColor:
-                                            Colors.redAccent[100],
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.w900,
+                          child: SingleChildScrollView(
+                            physics: BouncingScrollPhysics(),
+                            child: Column(
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          30, 60, 0, 0),
+                                      child: Text(
+                                        'ITEM DESCRIPTION:',
+                                        style: TextStyle(
+                                          backgroundColor:
+                                              Colors.redAccent[100],
+                                          fontSize: 26,
+                                          fontWeight: FontWeight.w900,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(30, 15, 30, 15),
-                                child: Container(
-                                  color: Colors.grey[200],
-                                  child: Text(
-                                    item.data['description'],
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontFamily: 'Proxima Nova',
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                                  child: Container(
+                                    color: Colors.grey[200],
+                                    child: Text(
+                                      item.data['description'],
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontFamily: 'Proxima Nova',
+                                      ),
+                                      textAlign: TextAlign.justify,
                                     ),
-                                    textAlign: TextAlign.justify,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -226,7 +227,6 @@ class _ItemsScreenState extends State<ItemsScreen> {
                             },
                             child: Text('Back'),
                           ),
-
                           ElevatedButton(
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all<
@@ -247,98 +247,95 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                 itemPictureLink: item.data['itemPictureLink'],
                               );
                               FirebaseFirestore.instance
-                                                     .collection("Basic Info")
-                                                     .doc(currentUser.uid)
-                                                     .collection("cart")
-                                                     .doc(itemName + "_" + username)
-                                                     .set(insertedItem.returnItemData());
+                                  .collection("Basic Info")
+                                  .doc(currentUser.uid)
+                                  .collection("cart")
+                                  .doc(itemName + "_" + username)
+                                  .set(insertedItem.returnItemData());
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    duration: Duration(seconds: 2),
-                                    content: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.check_circle_outline_outlined,
-                                          color: Colors.white,
+                                SnackBar(
+                                  duration: Duration(seconds: 2),
+                                  content: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle_outline_outlined,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          'Item inserted!',
+                                          style: TextStyle(color: Colors.white),
                                         ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Item inserted!',
-                                            style: TextStyle(
-                                                color: Colors.white),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                );
+                                ),
+                              );
                               Navigator.of(context).pop();
                             },
                             child: Text('Add To Cart'),
                           ),
-
                           ElevatedButton(
                             style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue),
+                            ),
+                            onPressed: () async {
+                              Navigator.of(context).pop();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  duration: Duration(seconds: 2),
+                                  content: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle_outline_outlined,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          'Item deleted!',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.blue),
-                              ),
-                              onPressed: () async {
-                                Navigator.of(context).pop();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    duration: Duration(seconds: 2),
-                                    content: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.check_circle_outline_outlined,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Item deleted!',
-                                            style: TextStyle(
-                                                color: Colors.white),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                                Future.delayed(
-                                  Duration(milliseconds: 1000),
-                                  (){
-                                    FirebaseFirestore.instance
-                                    .collection('Basic Info')
-                                    .doc(vendorUID)
-                                    .collection('items')
-                                    .doc(itemName + '_' + username)
-                                    .delete();
-                                  }
-                                );
-                              },
-                              child: Text('Delete'),
+                              );
+                              Future.delayed(
+                                Duration(milliseconds: 1000),
+                                () {
+                                  FirebaseFirestore.instance
+                                      .collection('Basic Info')
+                                      .doc(vendorUID)
+                                      .collection('items')
+                                      .doc(itemName + '_' + username)
+                                      .delete();
+                                },
+                              );
+                            },
+                            child: Text('Delete'),
                           )
                         ],
                       ),
                     ],
                   );
-                }
+                },
               ),
             ),
           );
-        }
+        },
       );
     } catch (e) {
       return Scaffold(
