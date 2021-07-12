@@ -112,6 +112,70 @@ class _RegisterState extends State<Register> {
         body: Stack(
         children: <Widget>[
 
+Padding(
+                    padding: const EdgeInsets.fromLTRB(0,50,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                   Padding(
+                    padding: const EdgeInsets.fromLTRB(300,150,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-1.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,800,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-4.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(320,600,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-3.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(260,800,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
           // Container(
           //   decoration: BoxDecoration(
           //   image: DecorationImage(
@@ -541,7 +605,7 @@ class _RegisterState extends State<Register> {
                                 child: TextButton(
                                   style: ButtonStyle(
                                     
-                                    minimumSize: MaterialStateProperty.all(Size(90, 0)),
+                                    minimumSize: MaterialStateProperty.all(Size(170, 30)),
                                     padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
@@ -549,7 +613,7 @@ class _RegisterState extends State<Register> {
                                       ),
                                     ),
 
-                                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,154,162,255)),
+                                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,161,213,226)),
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).popUntil(ModalRoute.withName(InitialScreen.routeName));
@@ -568,14 +632,14 @@ class _RegisterState extends State<Register> {
 
                               TextButton(
                                 style: ButtonStyle(
-                                  minimumSize: MaterialStateProperty.all(Size(90, 0)),
+                                  minimumSize: MaterialStateProperty.all(Size(170, 30)),
                                   padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
                                   shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20.0)
                                     ),
                                   ),
-                                  backgroundColor: MaterialStateProperty.all(Color(0xffe3b0f7)),
+                                  backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,172,222,99)),
                                 ),
                                 onPressed: () {register(context: context);},
                                 child: Text(
@@ -618,8 +682,11 @@ class _RegisterState extends State<Register> {
                 ),
 
             ),
+
           ),
+        
         ]
+        
         )
       );
   }

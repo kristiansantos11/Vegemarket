@@ -77,6 +77,71 @@ class _LoginState extends State<Login> {
             // Background
             Container(),
 
+            Padding(
+                    padding: const EdgeInsets.fromLTRB(0,150,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                   Padding(
+                    padding: const EdgeInsets.fromLTRB(300,150,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-1.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,700,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-4.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(320,600,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-3.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(260,800,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -129,7 +194,7 @@ class _LoginState extends State<Login> {
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
-                              color: Colors.white54
+                              color: Colors.white
                           ),
                           decoration: InputDecoration(
                             contentPadding:
@@ -167,7 +232,7 @@ class _LoginState extends State<Login> {
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
-                              color: Colors.white54),
+                              color: Colors.white),
                           obscureText: true,
                           decoration: InputDecoration(
                             contentPadding:
@@ -203,7 +268,7 @@ class _LoginState extends State<Login> {
                         _signInWithEmailAndPassword(context)
                       },
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red[300]),
+                        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,161,213,226)),
                         fixedSize: MaterialStateProperty.all(Size(100, 35)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
                       ),
@@ -222,7 +287,7 @@ class _LoginState extends State<Login> {
                         Navigator.of(context).pop()
                       }, 
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red[300]),
+                        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,172,222,99)),
                         fixedSize: MaterialStateProperty.all(Size(100, 35)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
                       ),
