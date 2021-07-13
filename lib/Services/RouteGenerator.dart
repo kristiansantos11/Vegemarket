@@ -93,11 +93,12 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             ),
           );
         },
-        transitionDuration: Duration(milliseconds: 500),
+        transitionDuration: Duration(milliseconds: 700),
         transitionsBuilder: (context, animation, secondaryAnimation, child){
-          return FadeTransition(
-            opacity: animation,
+          Animation<Offset> offsetAnimation = Tween<Offset>(begin: Offset(0,1), end: Offset(0,0)).chain(CurveTween(curve: Curves.easeInOutCubic)).animate(animation);
+          return SlideTransition(
             child: child,
+            position: offsetAnimation,
           );
         },
       );
@@ -127,9 +128,10 @@ Route<Null> getGenerateRoute(RouteSettings settings){
         },
         transitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (context, animation, secondaryAnimation, child){
-          return FadeTransition(
-            opacity: animation,
+          Animation<Offset> offsetAnimation = Tween<Offset>(begin: Offset(0,1), end: Offset(0,0)).chain(CurveTween(curve: Curves.easeInOutCubic)).animate(animation);
+          return SlideTransition(
             child: child,
+            position: offsetAnimation,
           );
         },
       );
@@ -163,7 +165,15 @@ Route<Null> getGenerateRoute(RouteSettings settings){
             create: (context) => animation,
             child: MessageScreen(),
           );
-        }
+        },
+        transitionDuration: Duration(milliseconds: 700),
+        transitionsBuilder: (context, animation, secondaryAnimation, child){
+          Animation<Offset> offsetAnimation = Tween<Offset>(begin: Offset(0,1), end: Offset(0,0)).chain(CurveTween(curve: Curves.easeInOutCubic)).animate(animation);
+          return SlideTransition(
+            child: child,
+            position: offsetAnimation,
+          );
+        },
       );
 
     case Profile.routeName: //added
@@ -212,9 +222,10 @@ Route<Null> getGenerateRoute(RouteSettings settings){
         },
         transitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (context, animation, secondaryAnimation, child){
-          return FadeTransition(
-            opacity: animation,
+          Animation<Offset> offsetAnimation = Tween<Offset>(begin: Offset(0,1), end: Offset(0,0)).chain(CurveTween(curve: Curves.easeInOutCubic)).animate(animation);
+          return SlideTransition(
             child: child,
+            position: offsetAnimation,
           );
         },
       );
