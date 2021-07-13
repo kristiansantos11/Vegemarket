@@ -95,8 +95,7 @@ class _ProfileState extends State<Profile> {
                                               child: FadeInImage.assetNetwork(
                                                 placeholder:
                                                     'assets/img/default_profile_picture.jpg',
-                                                image: snapshot
-                                                    .data["profile_picture"],
+                                                image: snapshot.data["profile_picture"],
                                               ),
                                             ),
                                           ),
@@ -184,7 +183,7 @@ class _ProfileState extends State<Profile> {
                                                               BorderRadius
                                                                   .circular(15),
                                                           child: Container(
-                                                            width: 150,
+                                                            width: 100,
                                                             height: 100,
                                                             child: FadeInImage
                                                                 .assetNetwork(
