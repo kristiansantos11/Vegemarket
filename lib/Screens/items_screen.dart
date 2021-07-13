@@ -208,126 +208,136 @@ class _ItemsScreenState extends State<ItemsScreen> {
                           ),
                         ),
                       ),
-                      ButtonBar(
-                        alignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Back'),
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
-                            ),
-                            onPressed: () async {
-                              ItemData insertedItem = ItemData(
-                                username: item.data['username'],
-                                vendorUID: item.data['vendorUID'],
-                                itemName: item.data['itemName'],
-                                description: item.data['description'],
-                                itemPictureLink: item.data['itemPictureLink'],
-                              );
-                              FirebaseFirestore.instance
-                                  .collection("Basic Info")
-                                  .doc(currentUser.uid)
-                                  .collection("cart")
-                                  .doc(itemName + "_" + username)
-                                  .set(insertedItem.returnItemData());
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  duration: Duration(seconds: 2),
-                                  content: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.check_circle_outline_outlined,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          'Item inserted!',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0,0,20,0),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                                    ),
                                   ),
+                                  fixedSize: MaterialStateProperty.all(Size(150, 50)),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.black38),
                                 ),
-                              );
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Add To Cart'),
-                          ),
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue),
-                            ),
-                            onPressed: () async {
-                              Navigator.of(context).pop();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  duration: Duration(seconds: 2),
-                                  content: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.check_circle_outline_outlined,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          'Item deleted!',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                              Future.delayed(
-                                Duration(milliseconds: 1000),
-                                () {
-                                  FirebaseFirestore.instance
-                                      .collection('Basic Info')
-                                      .doc(vendorUID)
-                                      .collection('items')
-                                      .doc(itemName + '_' + username)
-                                      .delete();
+                                onPressed: () {
+                                  Navigator.of(context).pop();
                                 },
-                              );
-                            },
-                            child: Text('Delete'),
-                          )
-                        ],
+                                child: Text('Back'),
+                              ),
+                            ),
+                            (vendorUID != currentUser.uid) ? ElevatedButton(
+                              style: ButtonStyle(
+                                fixedSize: MaterialStateProperty.all(Size(150, 50)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                                  ),
+                                ),
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.blue),
+                              ),
+                              onPressed: () async {
+                                ItemData insertedItem = ItemData(
+                                  username: item.data['username'],
+                                  vendorUID: item.data['vendorUID'],
+                                  itemName: item.data['itemName'],
+                                  description: item.data['description'],
+                                  itemPictureLink: item.data['itemPictureLink'],
+                                );
+                                FirebaseFirestore.instance
+                                    .collection("Basic Info")
+                                    .doc(currentUser.uid)
+                                    .collection("cart")
+                                    .doc(itemName + "_" + username)
+                                    .set(insertedItem.returnItemData());
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    duration: Duration(seconds: 2),
+                                    content: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check_circle_outline_outlined,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            'Item inserted!',
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('Add To Cart'),
+                            ) : SizedBox.shrink(),
+                            (vendorUID == currentUser.uid) ? Padding(
+                              padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  fixedSize: MaterialStateProperty.all(Size(150, 50)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                                    ),
+                                  ),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.red[500]),
+                                ),
+                                onPressed: () async {
+                                  Navigator.of(context).pop();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      duration: Duration(seconds: 2),
+                                      content: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.check_circle_outline_outlined,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              'Item deleted!',
+                                              style: TextStyle(color: Colors.white),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                  Future.delayed(
+                                    Duration(milliseconds: 1000),
+                                    () {
+                                      FirebaseFirestore.instance
+                                          .collection('Basic Info')
+                                          .doc(vendorUID)
+                                          .collection('items')
+                                          .doc(itemName + '_' + username)
+                                          .delete();
+                                    },
+                                  );
+                                },
+                                child: Text('Delete'),
+                              ),
+                            ) : SizedBox.shrink(),
+                          ],
+                        ),
                       ),
                     ],
                   );

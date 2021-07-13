@@ -39,8 +39,8 @@ class _AddItemState extends State<AddItem> {
           .snapshots(),
       builder: (context, snapshot) {
         return Scaffold(
-          resizeToAvoidBottomInset: false,
-          //extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: true,
+          extendBodyBehindAppBar: true,
           // appBar: AppBar(
           //   toolbarHeight: 65,
           //   centerTitle: true,
@@ -62,136 +62,142 @@ class _AddItemState extends State<AddItem> {
           // resizeToAvoidBottomInset: false,
           body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Flexible(
-                  flex: 2,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40),
-                          bottomRight: Radius.circular(40)),
-                      gradient: LinearGradient(
-                        //colors: [Colors.blue[900], Colors.grey[900]],
-                        colors: [Colors.deepPurple[700], Colors.grey[900]],
-                        //colors: [Colors.purpleAccent, Colors.redAccent],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 270,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(40),
+                        bottomRight: Radius.circular(40)),
+                    gradient: LinearGradient(
+                      //colors: [Colors.blue[900], Colors.grey[900]],
+                      colors: [Colors.deepPurple[700], Colors.grey[900]],
+                      //colors: [Colors.purpleAccent, Colors.redAccent],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
                     ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Container(
-                            child: ClipRRect(
-                              clipBehavior: Clip.antiAlias,
-                              borderRadius: BorderRadius.circular(12),
-                              child: Container(
-                                width: 250,
-                                height: 200,
-                                //color: Colors.teal,
-                                child: Image.asset(
-                                  'assets/img/LOGO-trans.png',
-                                  fit: BoxFit.cover,
-                                ),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          child: ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              width: 250,
+                              height: 200,
+                              //color: Colors.teal,
+                              child: Image.asset(
+                                'assets/img/LOGO-trans.png',
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                          Container(
-                            width: 300,
-                            height: 40,
-                            child: Text(
-                              'ADD ITEM',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Proxima Nova',
-                                fontSize: 24,
-                              ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0,0,0,20),
+                          child: Text(
+                            'ADD ITEM',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Proxima Nova',
+                              fontSize: 24,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
+
                 Expanded(
-                  flex: 3,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
+                  child: ListView(
+                    children: [
+                      SizedBox(height: 40),
+                      Container(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                'Item Name',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'BalsamiqSans',
-                                  fontSize: 24,
-                                  // color: Colors.white,
-                                  // backgroundColor: Colors.deepPurple[700],
-                                ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: TextFormField(
-                                    controller: _itemNameController,
-                                    decoration: InputDecoration(
-                                      hintText: 'Item Name',
-                                      labelText: 'Item Name',
-                                      border: OutlineInputBorder(),
+                              Column(
+                                children: [
+                                  Text(
+                                    'Item Name',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BalsamiqSans',
+                                      fontSize: 24,
+                                      // color: Colors.white,
+                                      // backgroundColor: Colors.deepPurple[700],
                                     ),
                                   ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'Item Description',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'BalsamiqSans',
-                                  fontSize: 24,
-                                  // color: Colors.white,
-                                  // backgroundColor: Colors.deepPurple[700],
-                                ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: TextField(
-                                      controller: _descriptionController,
-                                      maxLength: 1000,
-                                      maxLines: 5,
-                                      decoration: InputDecoration(
-                                        labelText: "Item Description",
-                                        hintText: "Item Desription",
-                                        border: OutlineInputBorder(),
+                                  Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                        controller: _itemNameController,
+                                        decoration: InputDecoration(
+                                          hintText: 'Item Name',
+                                          labelText: 'Item Name',
+                                          border: OutlineInputBorder(),
+                                        ),
                                       ),
-                                      selectionHeightStyle:
-                                          BoxHeightStyle.max),
-                                ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 60),
+                              Column(
+                                children: [
+                                  Text(
+                                    'Item Description',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'BalsamiqSans',
+                                      fontSize: 24,
+                                      // color: Colors.white,
+                                      // backgroundColor: Colors.deepPurple[700],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: TextField(
+                                          controller: _descriptionController,
+                                          maxLength: 1000,
+                                          maxLines: 5,
+                                          decoration: InputDecoration(
+                                            labelText: "Item Description",
+                                            hintText: "Item Desription",
+                                            border: OutlineInputBorder(),
+                                          ),
+                                          selectionHeightStyle:
+                                              BoxHeightStyle.max),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+
+                      
+                    ],
                   ),
                 ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.spaceEvenly,
+                  
+                
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
