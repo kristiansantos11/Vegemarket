@@ -28,179 +28,249 @@ class _AddItemState extends State<AddItem> {
   Widget build(BuildContext context) {
     User user = context.watch<User>();
     if (user == null) {
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(
+        body: CircularProgressIndicator(),
+      );
     }
     return StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection("Basic Info")
-            .doc(user.uid)
-            .snapshots(),
-        builder: (context, snapshot) {
-          return Scaffold(
-            //backgroundColor: Colors.grey[600],
-            appBar: AppBar(
-              toolbarHeight: 65,
-              centerTitle: true,
-              shadowColor: Colors.white,
-              backgroundColor: Colors.white,
-              title: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height / 15,
-                    maxWidth: MediaQuery.of(context).size.width / 2,
-                  ),
-                  child: Image.asset(
-                    "assets/img/vegemarket-text.png",
-                  ),
-                ),
-              ),
-            ),
-            resizeToAvoidBottomInset: false,
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SafeArea(
-                      child: Container(
-                        height: 500,
-                        width: 500,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [Colors.blue[800], Colors.blueGrey[900]]),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: TextFormField(
-                                controller: _itemNameController,
-                                decoration: InputDecoration(
-                                  hintText: 'Item name',
-                                  labelText: 'Item Name',
+      stream: FirebaseFirestore.instance
+          .collection('Basic Info')
+          .doc(user.uid)
+          .snapshots(),
+      builder: (context, snapshot) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          //extendBodyBehindAppBar: true,
+          // appBar: AppBar(
+          //   toolbarHeight: 65,
+          //   centerTitle: true,
+          //   shadowColor: Colors.white,
+          //   backgroundColor: Colors.white,
+          //   title: Padding(
+          //     padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+          //     child: ConstrainedBox(
+          //       constraints: BoxConstraints(
+          //         maxHeight: MediaQuery.of(context).size.height / 15,
+          //         maxWidth: MediaQuery.of(context).size.width / 2,
+          //       ),
+          //       child: Image.asset(
+          //         "assets/img/vegemarket-text.png",
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // resizeToAvoidBottomInset: false,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40)),
+                      gradient: LinearGradient(
+                        //colors: [Colors.blue[900], Colors.grey[900]],
+                        colors: [Colors.deepPurple[700], Colors.grey[900]],
+                        //colors: [Colors.purpleAccent, Colors.redAccent],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            child: ClipRRect(
+                              clipBehavior: Clip.antiAlias,
+                              borderRadius: BorderRadius.circular(12),
+                              child: Container(
+                                width: 250,
+                                height: 200,
+                                //color: Colors.teal,
+                                child: Image.asset(
+                                  'assets/img/LOGO-trans.png',
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(70),
-                                    //topRight: Radius.circular(70),
-                                    bottomLeft: Radius.circular(12),
-                                    bottomRight: Radius.circular(12),
-                                  ),
-                                  color: Colors.white24,
+                          ),
+                          Container(
+                            width: 300,
+                            height: 40,
+                            child: Text(
+                              'ADD ITEM',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Proxima Nova',
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'Item Name',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BalsamiqSans',
+                                  fontSize: 24,
+                                  // color: Colors.white,
+                                  // backgroundColor: Colors.deepPurple[700],
                                 ),
+                              ),
+                              Container(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(50),
-                                  child: Container(
-                                    //color: Colors.transparent,
-                                    child: TextField(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextFormField(
+                                    controller: _itemNameController,
+                                    decoration: InputDecoration(
+                                      hintText: 'Item Name',
+                                      labelText: 'Item Name',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Item Description',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'BalsamiqSans',
+                                  fontSize: 24,
+                                  // color: Colors.white,
+                                  // backgroundColor: Colors.deepPurple[700],
+                                ),
+                              ),
+                              Container(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: TextField(
                                       controller: _descriptionController,
                                       maxLength: 1000,
                                       maxLines: 5,
                                       decoration: InputDecoration(
                                         labelText: "Item Description",
                                         hintText: "Item Desription",
+                                        border: OutlineInputBorder(),
                                       ),
-                                      selectionHeightStyle: BoxHeightStyle.max,
-                                    ),
-                                  ),
+                                      selectionHeightStyle:
+                                          BoxHeightStyle.max),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.blue),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Back'),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.blue),
+                      ),
+                      onPressed: () {
+                        ItemData item = ItemData(
+                          itemName: _itemNameController.text,
+                          vendorUID: user.uid,
+                          description: _descriptionController.text,
+                          rating: [],
+                          comment: [],
+                          username: snapshot.data['username'],
+                          itemPicture:
+                              File('assets/img/missing_item_icon.jpg'),
+                        );
+                        Database()
+                            .registerItem(snapshot.data['username'], item);
+                        Navigator.of(context)
+                            .pushNamed(AskItemPicture.routeName, arguments: {
+                          "itemName": _itemNameController.text
+                        });
+                        _itemNameController.clear();
+                        _descriptionController.clear();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            duration: Duration(seconds: 2),
+                            content: Row(
+                              children: [
+                                Icon(
+                                  Icons.thumb_up_sharp,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    'Item added!',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.blue),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('Back'),
-                      ),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.blue),
-                        ),
-                        onPressed: () {
-                          ItemData item = ItemData(
-                            itemName: _itemNameController.text,
-                            vendorUID: user.uid,
-                            description: _descriptionController.text,
-                            rating: [],
-                            comment: [],
-                            username: snapshot.data['username'],
-                            itemPicture:
-                                File('assets/img/missing_item_icon.jpg'),
-                          );
-                          Database()
-                              .registerItem(snapshot.data['username'], item);
-                          Navigator.of(context)
-                              .pushNamed(AskItemPicture.routeName, arguments: {
-                            "itemName": _itemNameController.text
-                          });
-                          _itemNameController.clear();
-                          _descriptionController.clear();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              duration: Duration(seconds: 2),
-                              content: Row(
-                                children: [
-                                  Icon(
-                                    Icons.thumb_up_sharp,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      'Item added!',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text('Next'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        );
+                      },
+                      child: Text('Next'),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }
