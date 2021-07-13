@@ -265,25 +265,6 @@ class _LoginState extends State<Login> {
                     ElevatedButton(
                       onPressed: () => {
                         // TODO: Add login firebase function here
-                        _signInWithEmailAndPassword(context)
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,161,213,226)),
-                        fixedSize: MaterialStateProperty.all(Size(100, 35)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
-                      ),
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Proxima Nova',
-                          fontWeight: FontWeight.w700
-                        ),
-                      )
-                    ),
-                    ElevatedButton(
-                      onPressed: () => {
-                        // TODO: Add login firebase function here
                         Navigator.of(context).pop()
                       }, 
                       style: ButtonStyle(
@@ -297,6 +278,24 @@ class _LoginState extends State<Login> {
                           fontSize: 14,
                           fontFamily: 'Proxima Nova',
                           fontWeight: FontWeight.w700,
+                        ),
+                      )
+                    ),
+                    ElevatedButton(
+                      onPressed: () => {
+                        _signInWithEmailAndPassword(context)
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255,161,213,226)),
+                        fixedSize: MaterialStateProperty.all(Size(100, 35)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))
+                      ),
+                      child: Text(
+                        "LOGIN",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w700
                         ),
                       )
                     ),
