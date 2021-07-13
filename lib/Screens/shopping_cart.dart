@@ -49,7 +49,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     return Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Container(
-                        padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(
@@ -59,20 +58,24 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         ),
                         child: InkWell(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Container(
-                                  width: 100,
-                                  height: 100,
-                                  child: FadeInImage(
-                                    placeholder: AssetImage('assets/img/missing_item_icon.jpg'),
-                                    image: NetworkImage(snapshot.data[index].itemPictureLink),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: FadeInImage(
+                                      placeholder: AssetImage('assets/img/missing_item_icon.jpg'),
+                                      image: NetworkImage(snapshot.data[index].itemPictureLink),
+                                    ),
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(24,0,0,0),
+                                padding: const EdgeInsets.fromLTRB(0,0,100,0),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -101,6 +104,20 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                   ],
                                 ),
                               ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(24,0,0,0),
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    fixedSize: MaterialStateProperty.all(Size(30, 120)),
+                                    shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12))),
+                                    ),
+                                  ),
+                                  onPressed: (){},
+                                  child: Icon(Icons.delete)
+                                ),
+                              ),
+                              
                             ],
                           ),
                         )
