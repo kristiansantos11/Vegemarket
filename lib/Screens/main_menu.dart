@@ -96,7 +96,7 @@ class _MainMenuState extends State<MainMenu> {
                       });
                     },
                     style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(85, 75)),
+                        minimumSize: MaterialStateProperty.all(Size(90, 60)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -106,7 +106,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 0) ? Color(0xffff8383) : Colors.grey)),
+                            (currentPage == 0) ? Color.fromARGB(255,215,106,88) : Color.fromARGB(225,255,163,143))),
                     child: Icon(Icons.home_filled, color: Colors.white)
                 ),
 
@@ -118,7 +118,7 @@ class _MainMenuState extends State<MainMenu> {
                       });
                     },
                     style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(85, 75)),
+                        minimumSize: MaterialStateProperty.all(Size(90, 60)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -128,7 +128,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 1) ? Colors.amber[700] : Colors.grey)),
+                            (currentPage == 1) ? Color.fromARGB(225,116,190,209) : Color.fromARGB(255,161,213,226))),
                     child: Icon(Icons.store, color: Colors.white, size: 27)
                 ),
 
@@ -140,7 +140,7 @@ class _MainMenuState extends State<MainMenu> {
                       });
                     },
                     style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(85, 75)),
+                        minimumSize: MaterialStateProperty.all(Size(90, 60)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -150,7 +150,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 2) ? Colors.green[500] : Colors.grey)),
+                            (currentPage == 2) ? Color.fromARGB(225,142,191,71) : Color.fromARGB(255,172,222,99))),
                     child: Icon(Icons.message_outlined, color: Colors.white)),
 
                 // Profile Button
@@ -161,7 +161,7 @@ class _MainMenuState extends State<MainMenu> {
                       });
                     },
                     style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(85, 75)),
+                        minimumSize: MaterialStateProperty.all(Size(90, 60)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -171,7 +171,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 3) ? Colors.blue[700] : Colors.grey)),
+                            (currentPage == 3) ? Color.fromARGB(225,41,176,177) : Color.fromARGB(255,70,218,219))),
                     child: Icon(Icons.person, color: Colors.white)),
 
                 // App Settings button
@@ -182,7 +182,7 @@ class _MainMenuState extends State<MainMenu> {
                       });
                   },
                   style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(85, 75)),
+                        minimumSize: MaterialStateProperty.all(Size(90, 60)),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -192,7 +192,7 @@ class _MainMenuState extends State<MainMenu> {
                           ),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                            (currentPage == 4) ? Colors.purple[700] : Colors.grey)),
+                            (currentPage == 4) ? Color.fromARGB(225,60,123,200) : Color.fromARGB(255,106,164,237))),
                   child: Icon(Icons.settings, color: Colors.white)
                 ),
                 
@@ -225,6 +225,7 @@ class MainMenuStart extends StatefulWidget {
   _MainMenuStartState createState() => _MainMenuStartState();
 }
 
+
 class _MainMenuStartState extends State<MainMenuStart> {
   @override
   Widget build(BuildContext context) {
@@ -235,6 +236,125 @@ class _MainMenuStartState extends State<MainMenuStart> {
         child: Stack(
                 children: <Widget>[
 
+                   Padding(
+                    padding: const EdgeInsets.fromLTRB(0,50,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                   Padding(
+                    padding: const EdgeInsets.fromLTRB(400,20,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-1.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,700,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-4.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(320,600,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-3.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(70,400,0,0),
+                    child: Container(
+                      height: 170,
+                      width: 170,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-3.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(260,800,0,0),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                    decoration: BoxDecoration(
+                    image: DecorationImage(
+                    image: AssetImage("assets/img/design-2.png"),
+                    ), 
+                    )  
+                    ),
+                  ),
+                  
+                   Padding(
+                     padding: const EdgeInsets.fromLTRB(0,0,0,250),
+                     child: OverflowBox(
+                     minWidth: 0.0,
+                     minHeight: 0.0,
+                     maxWidth: double.infinity,
+                     maxHeight: double.infinity,
+                      
+                      child: Container(
+                        height: 500,
+                        width: 500,
+                      decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image: AssetImage("assets/img/howabout.gif"),
+                      ), 
+                      )  
+                      ),
+                  ),
+                   ),
+
+                   Padding(
+                     padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                     child: OverflowBox(
+                     minWidth: 0.0,
+                     minHeight: 0.0,
+                     maxWidth: double.infinity,
+                     maxHeight: double.infinity,
+                      
+                      child: Container(
+                        height: 800,
+                        width: 800,
+                      decoration: BoxDecoration(
+                      image: DecorationImage(
+                      image: AssetImage("assets/img/motor.gif"),
+                      ), 
+                      )  
+                      ),
+                  ),
+                   ),
+                  
+
                   // TODO: # Lagay nalang yung path sa loob ng AssetImage widget.
                   // Container(
                   //   decoration: BoxDecoration(image: DecorationImage(
@@ -242,36 +362,7 @@ class _MainMenuStartState extends State<MainMenuStart> {
                   //   )),
                   // ),
 
-                  OverflowBox(
-                    minWidth: 0.0,
-                    minHeight: 0.0,
-                    maxWidth: double.infinity,
-                    maxHeight: double.infinity,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: CircularText(
-                        children: [
-                          TextItem(
-                            text: Text(
-                              "How about ordering some veggies today?".toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 40,
-                                fontFamily: "Creamy Coconut",
-                                color: Color(0xffff8383),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            space: 2.15,
-                            startAngle: -90,
-                            startAngleAlignment: StartAngleAlignment.center,
-                            direction: CircularTextDirection.clockwise,
-                          ),
-                        ],
-                        radius: 300,
-                        position: CircularTextPosition.outside,
-                      ),
-                    ),
-                  ),
+                   
                 ],
               ),
       ),

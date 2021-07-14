@@ -38,7 +38,7 @@ class _ShopsPageState extends State<ShopsPage> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
-              color: Colors.amber[700],
+              color: Color.fromARGB(225,161,211,231),
             ),
             child: Column(
               children: [
