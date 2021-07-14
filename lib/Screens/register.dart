@@ -45,8 +45,11 @@ class _RegisterState extends State<Register> {
   String name;
   DateTime birthday;
   String contactnum;
-  String gender;
   String uid;
+  String houseStreetAddress;
+  String barangay;
+  String province;
+  String city;
   dynamic response;
   String error = "";
 
@@ -59,7 +62,7 @@ class _RegisterState extends State<Register> {
     if(formKey.currentState.validate() && birthday != null)
     {
       print("Validated successfully."); //debug
-      print("Current Data: $email,$password,$username,$name,$birthday,$contactnum,$gender"); //debug
+      print("Current Data: $email,$password,$username,$name,$birthday,$contactnum"); //debug
       print("Attempting to register email & password data to firebase..."); //debug
 
       UserData _user = UserData(
@@ -69,6 +72,10 @@ class _RegisterState extends State<Register> {
         name: name,
         birthdate: birthday,
         contactNumber: contactnum,
+        houseStreetAddress: houseStreetAddress,
+        city: city,
+        barangay: barangay,
+        province: province,
         profilePicture: File('assets/img/default_profile_picture.jpg'),
         isSeller: 0,
       );
@@ -249,6 +256,19 @@ Padding(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Email",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
 
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -290,6 +310,20 @@ Padding(
                                 fillColor: Colors.grey[600],
                               ),
                             ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Password",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
                           ),
 
                           Padding(
@@ -353,6 +387,20 @@ Padding(
                             ],),
                           ),
 
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Confirm Password",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row( children: <Widget>[
@@ -403,6 +451,20 @@ Padding(
                             ],),
                           ),
 
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Username",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextFormField(
@@ -445,6 +507,20 @@ Padding(
                             ),
                           ),
 
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Name",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextFormField(
@@ -482,6 +558,230 @@ Padding(
                                       hintStyle: TextStyle(
                                           color: Colors.grey[400]),
                                       hintText: "Name",
+                                      fillColor: Colors.grey[600],
+                                    ),
+                            ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("House Number & Street Name",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              validator: (val) {
+                                if(val=="")
+                                {
+                                  return "Empty House No. & Street Address";
+                                }
+                                else
+                                {
+                                  houseStreetAddress = val;
+                                  return null;
+                                }
+                              },
+                              cursorColor: Color(0xfff77272),
+                                    style: TextStyle(
+                                        fontFamily: 'Proxima Nova',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.white
+                                    ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.fromLTRB(
+                                              20, 10, 20, 10),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(
+                                          Radius.circular(100.0),
+                                        ),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      filled: true,
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400]),
+                                      hintText: "House Number & Street Address",
+                                      fillColor: Colors.grey[600],
+                                    ),
+                            ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Barangay",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              validator: (val) {
+                                if(val=="")
+                                {
+                                  return "Empty Barangay";
+                                }
+                                else
+                                {
+                                  barangay = val;
+                                  return null;
+                                }
+                              },
+                              cursorColor: Color(0xfff77272),
+                                    style: TextStyle(
+                                        fontFamily: 'Proxima Nova',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.white
+                                    ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.fromLTRB(
+                                              20, 10, 20, 10),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(
+                                          Radius.circular(100.0),
+                                        ),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      filled: true,
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400]),
+                                      hintText: "Barangay",
+                                      fillColor: Colors.grey[600],
+                                    ),
+                            ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("City",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+                          
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              validator: (val) {
+                                if(val=="")
+                                {
+                                  return "Empty City";
+                                }
+                                else
+                                {
+                                  city = val;
+                                  return null;
+                                }
+                              },
+                              cursorColor: Color(0xfff77272),
+                                    style: TextStyle(
+                                        fontFamily: 'Proxima Nova',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.white
+                                    ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.fromLTRB(
+                                              20, 10, 20, 10),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(
+                                          Radius.circular(100.0),
+                                        ),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      filled: true,
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400]),
+                                      hintText: "City",
+                                      fillColor: Colors.grey[600],
+                                    ),
+                            ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Province",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              validator: (val) {
+                                if(val=="")
+                                {
+                                  return "Empty Province";
+                                }
+                                else
+                                {
+                                  province = val;
+                                  return null;
+                                }
+                              },
+                              cursorColor: Color(0xfff77272),
+                                    style: TextStyle(
+                                        fontFamily: 'Proxima Nova',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.white
+                                    ),
+                                    decoration: InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.fromLTRB(
+                                              20, 10, 20, 10),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.all(
+                                          Radius.circular(100.0),
+                                        ),
+                                        borderSide: BorderSide.none,
+                                      ),
+                                      filled: true,
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400]),
+                                      hintText: "Province",
                                       fillColor: Colors.grey[600],
                                     ),
                             ),
@@ -543,6 +843,20 @@ Padding(
                                 fillColor: Colors.grey[600],
                               ),
                             ),
+                          ),
+
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Contact Number",
+                            style: TextStyle(
+                                fontFamily: 'Proxima Nova',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                height: 0.5,
+                                color: Colors.black
+                            ),),
                           ),
 
                           Padding(
