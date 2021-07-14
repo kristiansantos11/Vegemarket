@@ -54,6 +54,9 @@ dependencies:
   # Curved text for main menu
   flutter_circular_text: ^0.3.1
 
+  # Flutter launcher icons
+  flutter_launcher_icons: ^0.9.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -61,6 +64,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/img/logo_no_transparent.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
