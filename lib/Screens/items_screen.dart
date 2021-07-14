@@ -110,16 +110,11 @@ class _ItemsScreenState extends State<ItemsScreen> {
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           decoration: BoxDecoration(
-                            //borderRadius: BorderRadius.circular(12),
-                            gradient: LinearGradient(
-                              //colors: [Colors.red[900], Colors.redAccent],
-                              //colors: [Colors.redAccent, Colors.pinkAccent],
-                              //colors: [Colors.blue, Colors.indigo[900]],
-                              colors: [Colors.redAccent, Colors.indigo],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
+                            
+                            color: Color.fromARGB(255,161,213,226)
                             ),
-                          ),
+                          
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -144,9 +139,8 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                     item.data['itemName'],
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 40,
-                                      fontFamily: 'Proxima Nova',
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 50,
+                                      fontFamily: 'Creamy Coconut',
                                     ),
                                   ),
                                 ),
@@ -179,8 +173,6 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                       child: Text(
                                         'ITEM DESCRIPTION:',
                                         style: TextStyle(
-                                          backgroundColor:
-                                              Colors.redAccent[100],
                                           fontSize: 26,
                                           fontWeight: FontWeight.w900,
                                         ),
@@ -192,14 +184,13 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                   padding:
                                       const EdgeInsets.fromLTRB(30, 15, 30, 15),
                                   child: Container(
-                                    color: Colors.grey[200],
                                     child: Text(
                                       item.data['description'],
                                       style: TextStyle(
                                         fontSize: 24,
                                         fontFamily: 'Proxima Nova',
                                       ),
-                                      textAlign: TextAlign.justify,
+                                      textAlign: TextAlign.left,
                                     ),
                                   ),
                                 ),
@@ -208,97 +199,57 @@ class _ItemsScreenState extends State<ItemsScreen> {
                           ),
                         ),
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0,0,20,0),
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0,0,0,40),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0,0,40,0),
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                                      ),
                                     ),
+                                    fixedSize: MaterialStateProperty.all(Size(150, 50)),
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(Color.fromARGB(255,255,163,148)),
                                   ),
-                                  fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.black38),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('Back'),
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Back'),
                               ),
-                            ),
-                            (vendorUID != currentUser.uid) ? ElevatedButton(
-                              style: ButtonStyle(
-                                fixedSize: MaterialStateProperty.all(Size(150, 50)),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-                                  ),
-                                ),
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.blue),
-                              ),
-                              onPressed: () async {
-                                ItemData insertedItem = ItemData(
-                                  username: item.data['username'],
-                                  vendorUID: item.data['vendorUID'],
-                                  itemName: item.data['itemName'],
-                                  description: item.data['description'],
-                                  itemPictureLink: item.data['itemPictureLink'],
-                                );
-                                FirebaseFirestore.instance
-                                    .collection("Basic Info")
-                                    .doc(currentUser.uid)
-                                    .collection("cart")
-                                    .doc(itemName + "_" + username)
-                                    .set(insertedItem.returnItemData());
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    duration: Duration(seconds: 2),
-                                    content: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.check_circle_outline_outlined,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Item inserted!',
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Add To Cart'),
-                            ) : SizedBox.shrink(),
-                            (vendorUID == currentUser.uid) ? Padding(
-                              padding: const EdgeInsets.fromLTRB(0,0,0,0),
-                              child: ElevatedButton(
+                              (vendorUID != currentUser.uid) ? ElevatedButton(
                                 style: ButtonStyle(
                                   fixedSize: MaterialStateProperty.all(Size(150, 50)),
                                   shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                                      borderRadius: BorderRadius.all(Radius.circular(12)),
                                     ),
                                   ),
                                   backgroundColor:
-                                      MaterialStateProperty.all(Colors.red[500]),
+                                      MaterialStateProperty.all<Color>(Color.fromARGB(255,172,222,99)),
                                 ),
                                 onPressed: () async {
-                                  Navigator.of(context).pop();
+                                  ItemData insertedItem = ItemData(
+                                    username: item.data['username'],
+                                    vendorUID: item.data['vendorUID'],
+                                    itemName: item.data['itemName'],
+                                    description: item.data['description'],
+                                    itemPictureLink: item.data['itemPictureLink'],
+                                  );
+                                  FirebaseFirestore.instance
+                                      .collection("Basic Info")
+                                      .doc(currentUser.uid)
+                                      .collection("cart")
+                                      .doc(itemName + "_" + username)
+                                      .set(insertedItem.returnItemData());
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       duration: Duration(seconds: 2),
@@ -313,7 +264,7 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              'Item deleted!',
+                                              'Item inserted!',
                                               style: TextStyle(color: Colors.white),
                                             ),
                                           ),
@@ -321,22 +272,65 @@ class _ItemsScreenState extends State<ItemsScreen> {
                                       ),
                                     ),
                                   );
-                                  Future.delayed(
-                                    Duration(milliseconds: 1000),
-                                    () {
-                                      FirebaseFirestore.instance
-                                          .collection('Basic Info')
-                                          .doc(vendorUID)
-                                          .collection('items')
-                                          .doc(itemName + '_' + username)
-                                          .delete();
-                                    },
-                                  );
+                                  Navigator.of(context).pop();
                                 },
-                                child: Text('Delete'),
-                              ),
-                            ) : SizedBox.shrink(),
-                          ],
+                                child: Text('Add To Cart'),
+                              ) : SizedBox.shrink(),
+                              (vendorUID == currentUser.uid) ? Padding(
+                                padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    fixedSize: MaterialStateProperty.all(Size(150, 50)),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                                      ),
+                                    ),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.red[500]),
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.of(context).pop();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: Duration(seconds: 2),
+                                        content: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.check_circle_outline_outlined,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                'Item deleted!',
+                                                style: TextStyle(color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                    Future.delayed(
+                                      Duration(milliseconds: 1000),
+                                      () {
+                                        FirebaseFirestore.instance
+                                            .collection('Basic Info')
+                                            .doc(vendorUID)
+                                            .collection('items')
+                                            .doc(itemName + '_' + username)
+                                            .delete();
+                                      },
+                                    );
+                                  },
+                                  child: Text('Delete'),
+                                ),
+                              ) : SizedBox.shrink(),
+                            ],
+                          ),
                         ),
                       ),
                     ],

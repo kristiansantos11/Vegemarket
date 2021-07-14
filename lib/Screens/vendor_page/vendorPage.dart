@@ -45,7 +45,7 @@ class _VendorPageState extends State<VendorPage> {
                   slivers: [
                     SliverAppBar(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40))),
-                      backgroundColor: Colors.amber[700],
+                      backgroundColor: Color.fromARGB(255,255,163,148),
                       floating: true,
                       flexibleSpace: FlexibleSpaceBar(
                         collapseMode: CollapseMode.pin,
