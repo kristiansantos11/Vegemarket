@@ -27,18 +27,40 @@ class _SettingsState extends State<Settings> {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.0), color: Colors.white),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.0), color: Color.fromARGB(225,60,123,200)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                "Settings",
-                style: TextStyle(
-                  fontFamily: "Nexa",
-                  fontWeight: FontWeight.w700,
-                  fontSize: 35,
-                  color: Colors.black,
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: "Powered by\n",
+                  style: TextStyle(
+                    fontFamily: "Proxima Nova",
+                    fontSize: 24,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "JOMAHEK\n\n",
+                      style: TextStyle(
+                        fontFamily: "Nexa",
+                        fontSize: 75,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "Baguio, Mark Godwin\nDataro, Hershey Anne\nSantos, Kristian\nVeneracion, John Elbert",
+                      style: TextStyle(
+                        fontFamily: "Proxima Nova",
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500
+                      ),
+                    ),
+                  ]
                 ),
               ),
 
@@ -51,12 +73,12 @@ class _SettingsState extends State<Settings> {
                       fontFamily: "Nexa",
                       fontWeight: FontWeight.w700,
                       fontSize: 25,
-                      color: Colors.white,
+                      color: Color.fromARGB(225,60,123,200),
                     ),
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.purple[800]),
+                  backgroundColor: MaterialStateProperty.all(Colors.white),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),
                 ),
                 onPressed: () => {_signOut(context)},
