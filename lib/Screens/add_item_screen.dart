@@ -64,7 +64,6 @@ class _AddItemState extends State<AddItem> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 270,
@@ -100,7 +99,7 @@ class _AddItemState extends State<AddItem> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0,0,0,20),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                           child: Text(
                             'ADD ITEM',
                             textAlign: TextAlign.center,
@@ -116,7 +115,6 @@ class _AddItemState extends State<AddItem> {
                     ),
                   ),
                 ),
-
                 Expanded(
                   child: ListView(
                     children: [
@@ -188,27 +186,24 @@ class _AddItemState extends State<AddItem> {
                           ),
                         ),
                       ),
-
-                      
                     ],
                   ),
                 ),
-                  
-                
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                        fixedSize: MaterialStateProperty.all(Size(200, 50)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24),
+                              topRight: Radius.circular(24),
+                            ),
                           ),
                         ),
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.blue),
+                        backgroundColor: MaterialStateProperty.all(Colors.blue),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -217,14 +212,16 @@ class _AddItemState extends State<AddItem> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                        fixedSize: MaterialStateProperty.all(Size(200, 50)),
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24),
+                              topRight: Radius.circular(24),
+                            ),
                           ),
                         ),
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.blue),
+                        backgroundColor: MaterialStateProperty.all(Colors.blue),
                       ),
                       onPressed: () {
                         ItemData item = ItemData(
@@ -234,15 +231,13 @@ class _AddItemState extends State<AddItem> {
                           rating: [],
                           comment: [],
                           username: snapshot.data['username'],
-                          itemPicture:
-                              File('assets/img/missing_item_icon.jpg'),
+                          itemPicture: File('assets/img/missing_item_icon.jpg'),
                         );
                         Database()
                             .registerItem(snapshot.data['username'], item);
-                        Navigator.of(context)
-                            .pushNamed(AskItemPicture.routeName, arguments: {
-                          "itemName": _itemNameController.text
-                        });
+                        Navigator.of(context).pushNamed(
+                            AskItemPicture.routeName,
+                            arguments: {"itemName": _itemNameController.text});
                         _itemNameController.clear();
                         _descriptionController.clear();
                         ScaffoldMessenger.of(context).showSnackBar(

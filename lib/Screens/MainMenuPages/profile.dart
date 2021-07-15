@@ -23,12 +23,14 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   Random rnd = new Random();
-  List<Color> colors = [Colors.pink[50], 
-                        Colors.lightGreenAccent[100], 
-                        Colors.blue[50],
-                        Colors.purple[50],
-                        Colors.teal[50],
-                        Colors.indigo[100]];
+  List<Color> colors = [
+    Colors.pink[50],
+    Colors.lightGreenAccent[100],
+    Colors.blue[50],
+    Colors.purple[50],
+    Colors.teal[50],
+    Colors.indigo[100]
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,8 @@ class _ProfileState extends State<Profile> {
                                               child: FadeInImage.assetNetwork(
                                                 placeholder:
                                                     'assets/img/default_profile_picture.jpg',
-                                                image: snapshot.data["profile_picture"],
+                                                image: snapshot
+                                                    .data["profile_picture"],
                                               ),
                                             ),
                                           ),
@@ -144,12 +147,19 @@ class _ProfileState extends State<Profile> {
                                           itemBuilder: (content, index) {
                                             return InkWell(
                                               onTap: () {
-                                                Navigator.of(context).pushNamed(ItemsScreen.routeName, 
-                                                  arguments: ItemScreenArguments(
-                                                    itemName: items.data[index].itemName,
-                                                    vendorUID: items.data[index].vendorUID,
-                                                    username: items.data[index].username,
-                                                    description: items.data[index].description,
+                                                Navigator.of(context).pushNamed(
+                                                  ItemsScreen.routeName,
+                                                  arguments:
+                                                      ItemScreenArguments(
+                                                    itemName: items
+                                                        .data[index].itemName,
+                                                    vendorUID: items
+                                                        .data[index].vendorUID,
+                                                    username: items
+                                                        .data[index].username,
+                                                    description: items
+                                                        .data[index]
+                                                        .description,
                                                   ),
                                                 );
                                               },
@@ -162,7 +172,9 @@ class _ProfileState extends State<Profile> {
                                                         borderRadius:
                                                             BorderRadiusDirectional
                                                                 .circular(12),
-                                                        color: colors[rnd.nextInt(colors.length)],
+                                                        color: colors[
+                                                            rnd.nextInt(
+                                                                colors.length)],
                                                         boxShadow: [
                                                           BoxShadow(
                                                             color:
@@ -176,7 +188,9 @@ class _ProfileState extends State<Profile> {
                                                         ]),
                                                     alignment: Alignment.center,
                                                     child: Column(
-                                                      mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
                                                       children: [
                                                         ClipRRect(
                                                           borderRadius:
@@ -282,25 +296,23 @@ class _ProfileState extends State<Profile> {
                                       );
                                     }),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                child: ElevatedButton(
-                                  child: Text('Add Item'),
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
+                              ElevatedButton(
+                                child: Text('Add Item'),
+                                style: ButtonStyle(
+                                  fixedSize: MaterialStateProperty.all(
+                                      Size(200, 50)),
+                                  shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(24),
                                     ),
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.blue[900]),
                                   ),
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushNamed(AddItem.routeName);
-                                  },
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.blue[900]),
                                 ),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed(AddItem.routeName);
+                                },
                               ),
                             ],
                           ),

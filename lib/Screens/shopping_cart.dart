@@ -44,6 +44,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             children: [
               Expanded(
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index){
                     return Padding(
@@ -113,8 +114,37 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12))),
                                     ),
                                   ),
-                                  onPressed: (){},
-                                  child: Icon(Icons.delete)
+                                  onPressed: () async {
+                                    FirebaseFirestore.instance
+                                                       .collection('Basic Info')
+                                                       .doc(user.uid)
+                                                       .collection('cart')
+                                                       .doc(snapshot.data[index].itemName +'_'+snapshot.data[index].username)
+                                                       .delete();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: Duration(seconds: 2),
+                                        content: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.check_circle_outline_outlined,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                'Item deleted!',
+                                                style: TextStyle(color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Icon(Icons.delete),
                                 ),
                               ),
                               
