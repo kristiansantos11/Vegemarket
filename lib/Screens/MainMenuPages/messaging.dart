@@ -16,7 +16,7 @@ class _MessagingState extends State<Messaging> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
-          color: Colors.green[500],
+          color: Color.fromARGB(225,142,191,71),
         ),
         child: Center(
           child: Column(

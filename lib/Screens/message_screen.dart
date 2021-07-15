@@ -17,7 +17,7 @@ class _MessageScreenState extends State<MessageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(225,142,191,71),
         title: Text("maverick"),
       ),
       body: SafeArea(
@@ -94,7 +94,7 @@ class _MessageScreenState extends State<MessageScreen> {
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-                    color: Colors.green,
+                    color: Color.fromARGB(225,142,191,71),
                   ),
                   child: Column(
                     children: [

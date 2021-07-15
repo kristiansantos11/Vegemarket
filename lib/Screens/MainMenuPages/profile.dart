@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.0),
-                color: Colors.yellow[300],
+                color: Color.fromARGB(255,190,246,247),
               ),
               child: (user == null)
                   ? Center(child: CircularProgressIndicator())
@@ -71,11 +71,11 @@ class _ProfileState extends State<Profile> {
                                     borderRadius: BorderRadius.circular(12),
                                     color: Colors.white,
                                     gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
+                                      begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
                                       colors: [
-                                        Colors.blue.shade900,
-                                        Colors.blue[800]
+                                        Color.fromARGB(225,75,196,197),
+                                        Color.fromARGB(225,21,156,157)
                                       ],
                                     ),
                                   ),
@@ -303,11 +303,11 @@ class _ProfileState extends State<Profile> {
                                       Size(200, 50)),
                                   shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(24),
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
                                     ),
                                   ),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue[900]),
+                                      Color.fromARGB(225,41,176,177)),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context)
