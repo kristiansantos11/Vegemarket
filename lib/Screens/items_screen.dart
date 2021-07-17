@@ -117,15 +117,15 @@ class _ItemsScreenState extends State<ItemsScreen> {
                           
                           child: Center(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: 100,
+                                  width: 700,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
                                     child: Container(
                                       width: 200,
-                                      height: 150,
+                                      height: 220,
                                       child: FadeInImage.assetNetwork(
                                         placeholder:
                                             'assets/img/missing_item_icon.jpg',
